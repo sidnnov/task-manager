@@ -29,7 +29,7 @@ dev:
 	python manage.py runserver
 
 start:
-	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager:app
+	gunicorn task_manager.wsgi
 
 selfcheck:
 	poetry check
