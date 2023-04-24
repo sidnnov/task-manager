@@ -31,6 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = [
+    "task-manager-project-52.up.railway.app",
     "localhost",
     "127.0.0.1",
     "webserver",
