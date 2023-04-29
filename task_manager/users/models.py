@@ -16,4 +16,4 @@ class User(TimestampedModel):
     firs_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     username = models.CharField(max_length=30, unique=True)
-    password = ""
+    password = models.CharField(max_length=128, null=False)

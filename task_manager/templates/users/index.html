@@ -2,5 +2,32 @@
 {% load i18n %}
 
 {% block content %}
-<h1>Hello!</h1>
+    <h1>Hello!</h1>
+    {% for user in users %}
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Date of creation</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+              <th scope="row">{{ user.id }}</th>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.created_at }}</td>
+                <td>
+                    <a href="#">Изменить</a><br>
+                    <a href="#">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
 {% endblock %}
