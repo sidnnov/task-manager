@@ -58,9 +58,9 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.auth.middleware.PermissionDeniedMiddleware",
+    # "django.contrib.auth.middleware.PermissionDeniedMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.contrib.admindocs.middleware.XViewMiddleware",
+    # "django.contrib.admindocs.middleware.XViewMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 

@@ -16,6 +16,10 @@
   <body class="min-vh-100 d-flex flex-column">
     {% include "navbar.html" %}
 
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
+
     {% block main %}
     {% endblock main %}
 
