@@ -2,32 +2,32 @@
 {% load i18n %}
 
 {% block content %}
-    <h1>Hello!</h1>
-    {% for user in users %}
-    <table class="table table-striped">
+  <div class="container mx-auto my-5" style="width: 1000px;">
+      <h1 class="display-4">{% translate "Users" %}</h1>
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Full name</th>
-            <th scope="col">Date of creation</th>
-            <th scope="col"></th>
+            <th scope="col">{% translate "Username" %}</th>
+            <th scope="col">{% translate "Full name" %}</th>
+            <th scope="col" style="width: 155px;">{% translate "Date of creation" %}</th>
+            <th scope="col" style="width: 15px;"></th>
           </tr>
         </thead>
         <tbody>
             {% for user in users %}
             <tr>
               <th scope="row">{{ user.id }}</th>
-                <td>{{ user.first_name }}</td>
-                <td>{{ user.last_name }}</td>
-                <td>{{ user.created_at }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                <td>{{ user.date_joined }}</td>
                 <td>
-                    <a href="#">Изменить</a><br>
-                    <a href="#">Удалить</a>
+                    <a href="#">{% translate "Change" %}</a><br>
+                    <a href="#">{% translate "Delete" %}</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
       </table>
-    {% endfor %}
+  </div>
 {% endblock %}

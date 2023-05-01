@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "task_manager",
     "bootstrap4",
-    'django_extensions',
+    "django_extensions",
+    "task_manager.users",
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,10 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # },
     'default': dj_database_url.config(
         conn_max_age=600,
         conn_health_checks=True,

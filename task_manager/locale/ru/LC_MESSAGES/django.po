@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-29 14:42+0100\n"
+"POT-Creation-Date: 2023-04-30 21:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,7 @@ msgid "Task manager"
 msgstr "Менеджер задач"
 
 #: task_manager/templates/navbar.html:13
+#: task_manager/templates/users/index.html:6
 msgid "Users"
 msgstr "Пользователи"
 
@@ -78,6 +79,7 @@ msgid "Enter last name"
 msgstr "Введите фамилию"
 
 #: task_manager/templates/users/create.html:27
+#: task_manager/templates/users/index.html:11
 #: task_manager/templates/users/login.html:15
 msgid "Username"
 msgstr "Имя пользователя"
@@ -90,7 +92,9 @@ msgstr "Введите имя пользователя"
 msgid ""
 "Required field. No more than 30 characters. Only letters, numbers and @/./"
 "+/-/_ symbols."
-msgstr "Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./+/-/_."
+msgstr ""
+"Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
 
 #: task_manager/templates/users/create.html:34
 msgid "Your password must contain at least 3 characters."
@@ -103,6 +107,22 @@ msgstr "Для подтверждения введите, пожалуйста, 
 #: task_manager/templates/users/create.html:41
 msgid "Submit"
 msgstr "Продолжить"
+
+#: task_manager/templates/users/index.html:12
+msgid "Full name"
+msgstr "Полное имя"
+
+#: task_manager/templates/users/index.html:13
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: task_manager/templates/users/index.html:25
+msgid "Change"
+msgstr "Изменить"
+
+#: task_manager/templates/users/index.html:26
+msgid "Delete"
+msgstr "Удалить"
 
 #: task_manager/templates/users/login.html:11
 msgid "Login"

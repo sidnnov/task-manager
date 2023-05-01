@@ -1,19 +1,21 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-# Create your models here.
-class TimestampedModel(models.Model):
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
+    groups = models.ManyToManyField(
+        'auth.Group',
+        blank=True,
+        related_name='customuser_set',
+        related_query_name='customuser',
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        blank=True,
+        related_name='customuser_set',
+        related_query_name='customuser',
+    )
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
-
-
-class User(TimestampedModel):
-
-    firs_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    username = models.CharField(max_length=30, unique=True)
-    password = models.CharField(max_length=128, null=False)
+    def __str__(self):
+        return self.username
