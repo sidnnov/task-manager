@@ -38,23 +38,23 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = (
             'username', 'first_name', 'last_name', 'password1', 'password2')
-        widgets = {
-            'username': forms.TextInput(
-                attrs={
-                    'class': 'form-control is-valid',
-                    'placeholder': _('Enter username')
-                }
-            ),
-            'first_name': forms.TextInput(
-                attrs={
-                    'class': 'form-control is-valid',
-                    'placeholder': _('Enter first name')
-                }
-            ),
-            'last_name': forms.TextInput(
-                attrs={
-                    'class': 'form-control is-valid',
-                    'placeholder': _('Enter last name')
-                }
-            ),
-        }
+        # widgets = {
+        #     'username': forms.TextInput(
+        #         attrs={
+        #             'class': 'form-control is-valid',
+        #             'placeholder': _('Enter username')
+        #         }
+        #     ),
+        #     'first_name': forms.TextInput(
+        #         attrs={
+        #             'class': 'form-control is-valid',
+        #             'placeholder': _('Enter first name')
+        #         }
+        #     ),
+        #     'last_name': forms.TextInput(
+        #         attrs={
+        #             'class': 'form-control is-valid',
+        #             'placeholder': _('Enter last name')
+        #         }
+        #     ),
+        # }

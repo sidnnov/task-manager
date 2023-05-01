@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 21:38+0100\n"
+"POT-Creation-Date: 2023-05-01 23:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,37 +58,33 @@ msgstr "Пароль"
 msgid "Confirm password"
 msgstr "Подтверждение пароля"
 
-#: task_manager/templates/users/create.html:15
-msgid "Sign up"
-msgstr "Регистрация"
-
-#: task_manager/templates/users/create.html:19
+#: task_manager/templates/users/create.html:21
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/templates/users/create.html:20
+#: task_manager/templates/users/create.html:22
 msgid "Enter first name"
 msgstr "Введите имя"
 
-#: task_manager/templates/users/create.html:23
+#: task_manager/templates/users/create.html:26
 msgid "Last name"
 msgstr "Фамилия"
 
-#: task_manager/templates/users/create.html:24
+#: task_manager/templates/users/create.html:27
 msgid "Enter last name"
 msgstr "Введите фамилию"
 
-#: task_manager/templates/users/create.html:27
+#: task_manager/templates/users/create.html:31
 #: task_manager/templates/users/index.html:11
 #: task_manager/templates/users/login.html:15
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: task_manager/templates/users/create.html:28
+#: task_manager/templates/users/create.html:32
 msgid "Enter username"
 msgstr "Введите имя пользователя"
 
-#: task_manager/templates/users/create.html:29
+#: task_manager/templates/users/create.html:33
 msgid ""
 "Required field. No more than 30 characters. Only letters, numbers and @/./"
 "+/-/_ symbols."
@@ -96,17 +92,25 @@ msgstr ""
 "Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 
-#: task_manager/templates/users/create.html:34
+#: task_manager/templates/users/create.html:39
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: task_manager/templates/users/create.html:39
+#: task_manager/templates/users/create.html:45
 msgid "To confirm, please enter your password again."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
-#: task_manager/templates/users/create.html:41
-msgid "Submit"
-msgstr "Зарегистрировать"
+#: task_manager/templates/users/delete_user.html:10
+msgid "Deleting a user"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/users/delete_user.html:12
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: task_manager/templates/users/delete_user.html:16
+msgid "Yes, delete"
+msgstr "Да, удалить"
 
 #: task_manager/templates/users/index.html:12
 msgid "Full name"
@@ -116,7 +120,7 @@ msgstr "Полное имя"
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: task_manager/templates/users/index.html:25
+#: task_manager/templates/users/index.html:25 task_manager/users/views.py:49
 msgid "Change"
 msgstr "Изменить"
 
@@ -132,5 +136,14 @@ msgstr "Вход"
 msgid "Sign in"
 msgstr "Войти"
 
-#~ msgid "Remember me"
-#~ msgstr "Запомнить меня"
+#: task_manager/users/views.py:23
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: task_manager/users/views.py:24
+msgid "Submit"
+msgstr "Зарегистрировать"
+
+#: task_manager/users/views.py:48
+msgid "Changing user"
+msgstr "Изменение пользователя"
