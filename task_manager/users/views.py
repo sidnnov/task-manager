@@ -23,6 +23,11 @@ class UserCreateView(FormView):
         form.save()
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.get_form()
+        return context
+
 
 class LoginForm(View):
 

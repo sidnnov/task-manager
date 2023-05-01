@@ -17,30 +17,30 @@
         </div>
 
         <div class="form-group">
-            <label for="{{ form.first_name.id_for_label }}">{% translate 'First name' %}</label>
-            {{ form.first_name }}
+            <label for="first_name">{% translate 'First name' %}</label>
+            <input type="text" class="form-control" name="first_name" id="id_firstname" placeholder="{% translate 'Enter first name' %}">
         </div>
 
         <div class="form-group">
-            <label for="{{ form.last_name.id_for_label }}">{% translate 'Last name' %}</label>
-            {{ form.last_name }}
+            <label for="last_name">{% translate 'Last name' %}</label>
+            <input type="text" class="form-control" name="last_name" id="id_lastname" placeholder="{% translate 'Enter last name' %}">
         </div>
 
         <div class="form-group">
-            <label for="{{ form.username.id_for_label }}">{% translate 'Username' %}</label>
-            {{ form.username }}
+            <label for="username">{% translate 'Username' %}</label>
+            <input type="text" class="form-control" name="username" id="id_username" placeholder="{% translate 'Enter username' %}">
             <small id="nameHelp" class="form-text text-muted">{% translate 'Required field. No more than 30 characters. Only letters, numbers and @/./+/-/_ symbols.' %}</small>
         </div>
 
         <div class="form-group">
-            <label for="{{ form.password1.id_for_label }}">{{ psw }}</label>
-            <input type="password" class="form-control" name="password1" id="id_password1" placeholder="{{ psw }}" required>
+            <label for="Password1">{{ psw }}</label>
+            <input type="password" class="form-control" name="password1" id="id_password1" placeholder="{{ psw }}">
             <small class="form-text text-muted">{% translate 'Your password must contain at least 3 characters.' %}</small>
         </div>
 
         <div class="form-group">
-            <label for="{{ form.password2.id_for_label }}">{{ conf }}</label>
-            <input type="password" class="form-control" name="password2" id="id_password2" placeholder="{{ conf }}" required>
+            <label for="Password2">{{ conf }}</label>
+            <input type="password" class="form-control" name="password2" id="id_password2" placeholder="{{ conf }}">
             <small class="form-text text-muted">{% translate 'To confirm, please enter your password again.' %}</small>
         </div>
 
