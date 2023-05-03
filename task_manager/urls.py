@@ -22,5 +22,5 @@ urlpatterns = [
     path("", views.HomePageView.as_view(), name='index'),
     path("admin/", admin.site.urls),
     path("users/", include("task_manager.users.urls")),
-    path("accounts", include("django.contrib.auth.urls")),
+    path("login/", views.LoginForm.as_view(), name="user_login"),
 ]

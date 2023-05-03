@@ -50,12 +50,6 @@ class UpdateUserView(UpdateView):
     }
 
 
-class LoginForm(View):
-
-    def get(self, request):
-        return render(request, "users/login.html")
-
-
 # class UserCreateForm(FormView):
 
 #     def get(self, request):
