@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from task_manager import views
+from task_manager.views import HomePageView, LoginView
+from django.contrib.auth.views import LogoutView 
 
 urlpatterns = [
-    path("", views.HomePageView.as_view(), name='index'),
+    path("", HomePageView.as_view(), name='index'),
     path("admin/", admin.site.urls),
     path("users/", include("task_manager.users.urls")),
-    path("login/", views.LoginForm.as_view(), name="user_login"),
+    path("login/", LoginView.as_view(), name="login"),
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
 ]

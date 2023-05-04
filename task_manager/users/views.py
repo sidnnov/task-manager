@@ -12,13 +12,13 @@ class IndexView(View):
 
     def get(self, request, *args, **kwargs):
         users = CustomUser.objects.all()
-        return render(request, "users/index.html", context={'users': users})
+        return render(request, "users/users.html", context={'users': users})
 
 
 class UserCreateView(FormView):
     template_name = "users/create.html"
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy("user_login")
+    success_url = reverse_lazy("login")
     extra_context = {
         "table_name": _("Sign up"),
         "button_name": _("Submit"),
