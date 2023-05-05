@@ -1,10 +1,10 @@
-from django.contrib.auth.views import LoginView
 # from django.contrib.auth.decorators import login_required
-from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.base import TemplateView
+from django.contrib.auth.views import LogoutView, LoginView
 from django.shortcuts import render
 from django.contrib import messages
-# from django.views import View
+from django.utils.translation import gettext_lazy as _
 
 
 class HomePageView(TemplateView):
@@ -13,6 +13,13 @@ class HomePageView(TemplateView):
         return render(request, "index.html")
 
 
-class LoginView(LoginView):
+class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = "login.html"
-    redirect_authenticated_user = True
+    success_message = _("You are logged in")
+
+
+class UserLogoutView(LogoutView):
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, _("You are unlogged"))
+        return super().dispatch(request, *args, **kwargs)

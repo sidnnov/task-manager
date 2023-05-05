@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic.edit import FormView, UpdateView, DeleteView
@@ -15,10 +16,11 @@ class IndexView(View):
         return render(request, "users/users.html", context={'users': users})
 
 
-class UserCreateView(FormView):
+class UserCreateView(SuccessMessageMixin, FormView):
     template_name = "users/create.html"
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
+    success_message = "Пользователь успешно зарегистрирован"
     extra_context = {
         "table_name": _("Sign up"),
         "button_name": _("Submit"),
@@ -48,19 +50,3 @@ class UpdateUserView(UpdateView):
         "table_name": _("Changing user"),
         "button_name": _("Change"),
     }
-
-
-# class UserCreateForm(FormView):
-
-#     def get(self, request):
-#         # form = UserForm()
-#         return render(request, "users/create.html")
-
-#     def post(self, request, *args, **kwargs):
-#         form = UserForm(request.POST)
-#         print(form)
-#         if form.is_valid():
-#             form.save()
-#             # messages.success(request, 'Статья успешно добавлена')
-#             return redirect('user_login')
-#         return render(request, 'users/create.html', {'form': form})

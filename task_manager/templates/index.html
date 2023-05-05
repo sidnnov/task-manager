@@ -3,9 +3,7 @@
 
 {% load bootstrap4 %}
 
-{% block main %}
-<main class="flex-grow-1">
-  <div class="container wrapper flex-grow-1 my-5">
+{% block content %}
     <h1 class="my-4"></h1>
     <div class="card">
       <div class="card-body p-5 bg-light">
@@ -15,6 +13,4 @@
         <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">{% translate "Learn more" %}</a>
       </div>
     </div>
-  </div>
-</main>
-{% endblock main %}
+{% endblock %}

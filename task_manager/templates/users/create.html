@@ -5,11 +5,11 @@
 {% load bootstrap4 %}
 
 
-{% block main %}
+{% block content %}
 {% translate 'Password' as psw %}
 {% translate 'Confirm password' as conf %}
 
-<div class="container mx-auto my-5" style="width: 700px;">
+<div class="container mx-auto" style="width: 700px;">
     <form method="post" class="form-group">
         {% csrf_token %}
 
@@ -50,4 +50,4 @@
         {{ form.errors }}
     </form>
 </div>
-{% endblock main %}
+{% endblock content %}
