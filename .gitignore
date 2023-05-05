@@ -1,7 +1,7 @@
 .pytest_cache
 __pycache__/
-hexlet_django_blog/__pycache__
-hexlet_django_blog/article/__pycache__
+task_manager/__pycache__
+task_manager/users/__pycache__
 .vscode/
 dist/
 .venv/
