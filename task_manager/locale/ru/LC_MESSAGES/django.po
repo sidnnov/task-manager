@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-05 22:33+0100\n"
+"POT-Creation-Date: 2023-05-06 14:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,18 +36,18 @@ msgstr "Узнать больше"
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/login.html:16
+#: task_manager/templates/login.html:27
 #: task_manager/templates/users/create.html:31
 #: task_manager/templates/users/users.html:10
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: task_manager/templates/login.html:20
+#: task_manager/templates/login.html:31
 #: task_manager/templates/users/create.html:9
 msgid "Password"
 msgstr "Пароль"
 
-#: task_manager/templates/login.html:23
+#: task_manager/templates/login.html:34
 msgid "Sign in"
 msgstr "Войти"
 
@@ -144,7 +144,7 @@ msgstr "Полное имя"
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: task_manager/templates/users/users.html:24 task_manager/users/views.py:51
+#: task_manager/templates/users/users.html:24 task_manager/users/views.py:54
 msgid "Change"
 msgstr "Изменить"
 
@@ -152,15 +152,27 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/users/views.py:25
+#: task_manager/users/views.py:24
+msgid "User is successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/users/views.py:26
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: task_manager/users/views.py:26
+#: task_manager/users/views.py:27
 msgid "Submit"
 msgstr "Зарегистрировать"
 
-#: task_manager/users/views.py:50
+#: task_manager/users/views.py:44
+msgid "User has been successfully deleted"
+msgstr "Пользователь успешно удален"
+
+#: task_manager/users/views.py:51
+msgid "User has been successfully changed"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/users/views.py:53
 msgid "Changing user"
 msgstr "Изменение пользователя"
 

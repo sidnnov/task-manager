@@ -20,7 +20,7 @@ class UserCreateView(SuccessMessageMixin, FormView):
     template_name = "users/create.html"
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
-    success_message = "Пользователь успешно зарегистрирован"
+    success_message = _("User is successfully registered")
     extra_context = {
         "table_name": _("Sign up"),
         "button_name": _("Submit"),
@@ -36,16 +36,18 @@ class UserCreateView(SuccessMessageMixin, FormView):
         return context
 
 
-class DeleteUserView(DeleteView):
+class DeleteUserView(SuccessMessageMixin, DeleteView):
     model = CustomUser
     success_url = reverse_lazy('users')
     template_name = 'users/delete_user.html'
+    success_message = _("User has been successfully deleted")
 
 
-class UpdateUserView(UpdateView):
+class UpdateUserView(SuccessMessageMixin, UpdateView):
     model = CustomUser
     template_name = "users/create.html"
     fields = ("username", "first_name", "last_name",)
+    success_message = _("User has been successfully changed")
     extra_context = {
         "table_name": _("Changing user"),
         "button_name": _("Change"),

@@ -3,10 +3,11 @@
 
 <!doctype html>
 <html lang="en">
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.alert').forEach(alert => {
-            alert.addEventListener('click', () => {
+            const closeButton = alert.querySelector('.close');
+            closeButton.addEventListener('click', () => {
                 alert.style.display = 'none';
             });
         });
