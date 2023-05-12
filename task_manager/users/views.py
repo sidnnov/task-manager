@@ -26,15 +26,6 @@ class UserCreateView(SuccessMessageMixin, FormView):
         "button_name": _("Submit"),
     }
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = self.get_form()
-        return context
-
 
 class DeleteUserView(SuccessMessageMixin, DeleteView):
     model = CustomUser
@@ -46,7 +37,7 @@ class DeleteUserView(SuccessMessageMixin, DeleteView):
 class UpdateUserView(SuccessMessageMixin, UpdateView):
     model = CustomUser
     template_name = "users/create.html"
-    fields = ("username", "first_name", "last_name",)
+    form_class = CustomUserCreationForm
     success_message = _("User has been successfully changed")
     extra_context = {
         "table_name": _("Changing user"),
