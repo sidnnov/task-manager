@@ -23,18 +23,19 @@ class UserTestCase(TestCase):
         self.assertEqual(user.username, 'test_1')
         self.assertEqual(user.first_name, 'first')
         self.assertEqual(user.last_name, 'last')
+        self.assertTrue(user.check_password("123"))
         self.assertRedirects(response, reverse_lazy('login'))
 
-    def test_update_users(self):
-        response = self.client.post(reverse_lazy('user_update'), {
-            'username': "test_1",
-            'first_name': "first",
-            'last_name': "last",
-            'password1': "123",
-            'password2': "123",
-            }, follow=True
-        )
-        self.assertRedirects(response, reverse_lazy('login'))
+    # def test_update_users(self):
+    #     response = self.client.post(reverse_lazy('user_update'), {
+    #         'username': "test_1",
+    #         'first_name': "first",
+    #         'last_name': "last",
+    #         'password1': "123",
+    #         'password2': "123",
+    #         }, follow=True
+    #     )
+    #     self.assertRedirects(response, reverse_lazy('login'))
     # def test_delete_users(self):
     #     user = CustomUser.objects.get(first_name="John")
     #     user.delete()

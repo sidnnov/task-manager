@@ -6,6 +6,8 @@ from django.views.generic.edit import FormView, UpdateView, DeleteView
 from task_manager.users.forms import CustomUserCreationForm
 from task_manager.users.models import CustomUser
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib import messages
 
 
 # Create your views here.
@@ -26,20 +28,42 @@ class UserCreateView(SuccessMessageMixin, FormView):
         "button_name": _("Submit"),
     }
 
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
-class DeleteUserView(SuccessMessageMixin, DeleteView):
+
+class DeleteUserView(PermissionRequiredMixin, SuccessMessageMixin, DeleteView):
     model = CustomUser
     success_url = reverse_lazy('users')
     template_name = 'users/delete_user.html'
     success_message = _("User has been successfully deleted")
+    permission_required = 'users.change_customuser'
+    denied_message = _("You have no rights to change another user.")
+
+    def has_permission(self):
+        return self.get_object() == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.denied_message)
+        return redirect('users')
 
 
-class UpdateUserView(SuccessMessageMixin, UpdateView):
+class UpdateUserView(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
     template_name = "users/create.html"
     form_class = CustomUserCreationForm
     success_message = _("User has been successfully changed")
+    permission_required = 'users.change_customuser'
+    denied_message = _("You have no rights to change another user.")
     extra_context = {
         "table_name": _("Changing user"),
         "button_name": _("Change"),
     }
+
+    def has_permission(self):
+        return self.get_object() == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.denied_message)
+        return redirect('users')
