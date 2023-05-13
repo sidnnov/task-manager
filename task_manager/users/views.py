@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import redirect, render
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
@@ -11,11 +11,27 @@ from django.contrib import messages
 
 
 # Create your views here.
+class UserPermissionMixin(PermissionRequiredMixin):
+    permission_required = "users.change_customuser"
+    denied_message = _("You have no rights to change another user.")
+    not_auth_message = _("You are not authorized! Please log in.")
+
+    def has_permission(self):
+        return self.get_object() == self.request.user
+
+    def handle_no_permission(self):
+        if not self.request.user.is_authenticated:
+            messages.error(self.request, self.not_auth_message)
+            return redirect("login")
+        messages.error(self.request, self.denied_message)
+        return redirect("users")
+
+
 class IndexView(View):
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         users = CustomUser.objects.all()
-        return render(request, "users/users.html", context={'users': users})
+        return render(request, "users/users.html", context={"users": users})
 
 
 class UserCreateView(SuccessMessageMixin, FormView):
@@ -33,37 +49,19 @@ class UserCreateView(SuccessMessageMixin, FormView):
         return super().form_valid(form)
 
 
-class DeleteUserView(PermissionRequiredMixin, SuccessMessageMixin, DeleteView):
+class DeleteUserView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     model = CustomUser
-    success_url = reverse_lazy('users')
-    template_name = 'users/delete_user.html'
+    success_url = reverse_lazy("users")
+    template_name = "users/delete_user.html"
     success_message = _("User has been successfully deleted")
-    permission_required = 'users.change_customuser'
-    denied_message = _("You have no rights to change another user.")
-
-    def has_permission(self):
-        return self.get_object() == self.request.user
-
-    def handle_no_permission(self):
-        messages.error(self.request, self.denied_message)
-        return redirect('users')
 
 
-class UpdateUserView(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
+class UpdateUserView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
     template_name = "users/create.html"
     form_class = CustomUserCreationForm
     success_message = _("User has been successfully changed")
-    permission_required = 'users.change_customuser'
-    denied_message = _("You have no rights to change another user.")
     extra_context = {
         "table_name": _("Changing user"),
         "button_name": _("Change"),
     }
-
-    def has_permission(self):
-        return self.get_object() == self.request.user
-
-    def handle_no_permission(self):
-        messages.error(self.request, self.denied_message)
-        return redirect('users')

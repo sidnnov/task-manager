@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-06 14:42+0100\n"
+"POT-Creation-Date: 2023-05-13 16:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,13 +37,11 @@ msgid "Login"
 msgstr "Вход"
 
 #: task_manager/templates/login.html:27
-#: task_manager/templates/users/create.html:31
 #: task_manager/templates/users/users.html:10
 msgid "Username"
 msgstr "Имя пользователя"
 
 #: task_manager/templates/login.html:31
-#: task_manager/templates/users/create.html:9
 msgid "Password"
 msgstr "Пароль"
 
@@ -84,46 +82,6 @@ msgstr "Вход"
 msgid "Registration"
 msgstr "Регистрация"
 
-#: task_manager/templates/users/create.html:10
-msgid "Confirm password"
-msgstr "Подтверждение пароля"
-
-#: task_manager/templates/users/create.html:21
-msgid "First name"
-msgstr "Имя"
-
-#: task_manager/templates/users/create.html:22
-msgid "Enter first name"
-msgstr "Введите имя"
-
-#: task_manager/templates/users/create.html:26
-msgid "Last name"
-msgstr "Фамилия"
-
-#: task_manager/templates/users/create.html:27
-msgid "Enter last name"
-msgstr "Введите фамилию"
-
-#: task_manager/templates/users/create.html:32
-msgid "Enter username"
-msgstr "Введите имя пользователя"
-
-#: task_manager/templates/users/create.html:33
-msgid ""
-"Required field. No more than 30 characters. Only letters, numbers and @/./"
-"+/-/_ symbols."
-msgstr ""
-"Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./"
-"+/-/_."
-
-#: task_manager/templates/users/create.html:39
-msgid "Your password must contain at least 3 characters."
-msgstr "Ваш пароль должен содержать как минимум 3 символа."
-
-#: task_manager/templates/users/create.html:45
-msgid "To confirm, please enter your password again."
-msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
-
 #: task_manager/templates/users/delete_user.html:9
 msgid "Deleting a user"
 msgstr "Удаление пользователя"
@@ -144,7 +102,7 @@ msgstr "Полное имя"
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: task_manager/templates/users/users.html:24 task_manager/users/views.py:54
+#: task_manager/templates/users/users.html:24 task_manager/users/views.py:66
 msgid "Change"
 msgstr "Изменить"
 
@@ -152,27 +110,35 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/users/views.py:24
+#: task_manager/users/views.py:16
+msgid "You have no rights to change another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/users/views.py:17
+msgid "You are not authorized! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/users/views.py:41
 msgid "User is successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:26
+#: task_manager/users/views.py:43
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: task_manager/users/views.py:27
+#: task_manager/users/views.py:44
 msgid "Submit"
 msgstr "Зарегистрировать"
 
-#: task_manager/users/views.py:44
+#: task_manager/users/views.py:56
 msgid "User has been successfully deleted"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:51
+#: task_manager/users/views.py:63
 msgid "User has been successfully changed"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:53
+#: task_manager/users/views.py:65
 msgid "Changing user"
 msgstr "Изменение пользователя"
 
@@ -183,3 +149,34 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:24
 msgid "You are unlogged"
 msgstr "Вы разлогинены"
+
+#~ msgid "Confirm password"
+#~ msgstr "Подтверждение пароля"
+
+#~ msgid "First name"
+#~ msgstr "Имя"
+
+#~ msgid "Enter first name"
+#~ msgstr "Введите имя"
+
+#~ msgid "Last name"
+#~ msgstr "Фамилия"
+
+#~ msgid "Enter last name"
+#~ msgstr "Введите фамилию"
+
+#~ msgid "Enter username"
+#~ msgstr "Введите имя пользователя"
+
+#~ msgid ""
+#~ "Required field. No more than 30 characters. Only letters, numbers and @/./"
+#~ "+/-/_ symbols."
+#~ msgstr ""
+#~ "Обязательное поле. Не более 30 символов. Только буквы, цифры и символы "
+#~ "@/./+/-/_."
+
+#~ msgid "Your password must contain at least 3 characters."
+#~ msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#~ msgid "To confirm, please enter your password again."
+#~ msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
