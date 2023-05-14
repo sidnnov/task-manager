@@ -17,9 +17,9 @@ class UserPermissionMixin(PermissionRequiredMixin):
     not_auth_message = _("You are not authorized! Please log in.")
 
     def has_permission(self):
-        return self.get_object() == self.request.user
+        return self.get_object().pk == self.request.user.pk
 
-    def handle_no_permission(self):
+    def handle_no_permission(self, *args, **kwargs):
         if not self.request.user.is_authenticated:
             messages.error(self.request, self.not_auth_message)
             return redirect("login")

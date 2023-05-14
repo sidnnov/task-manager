@@ -9,3 +9,4 @@ dist/
 coverage.xml
 .env
 db.sqlite3
+task_manager/users/test_test.py
