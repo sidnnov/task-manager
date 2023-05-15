@@ -1,41 +1,26 @@
 PORT ?= 8000
 
-# schema-load:
-# 	psql page_analyzer < database.sql
+migrate:
+	poetry run python manage.py makemigrations task_manager
+	poetry run python manage.py migrate
 
-# start-postgresql:
-# 	sudo service postgresql start
+# install:
+# 	poetry install
 
-# stop-postgresql:
-# 	sudo service postgresql stop
-
-# db-create:
-# 	createdb page_analyzer
-
-# db-reset:
-# 	dropdb page_analyzer || true
-# 	createdb page_analyzer
-
-# connect:
-# 	psql -d page_analyzer
-
-install:
-	poetry install
-
-build:
-	poetry build
+# build:
+# 	poetry build
 
 dev:
 	python manage.py runserver
 
-start:
-	gunicorn task_manager.wsgi
+# start:
+# 	gunicorn task_manager.wsgi
 
-selfcheck:
-	poetry check
+# selfcheck:
+# 	poetry check
 
-lint:
-	poetry run flake8 task_manager
+# lint:
+# 	poetry run flake8 task_manager
 
 # pytest:
 # 	poetry run pytest

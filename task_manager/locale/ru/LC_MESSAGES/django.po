@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-13 16:02+0100\n"
+"POT-Creation-Date: 2023-05-15 23:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,47 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: task_manager/statuses/models.py:8
+#, fuzzy
+#| msgid "Username"
+msgid "name"
+msgstr "Имя пользователя"
+
+#: task_manager/statuses/views.py:16 task_manager/users/views.py:17
+msgid "You are not authorized! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/statuses/views.py:36
+msgid "Status successfully created"
+msgstr "Статус успешно создан"
+
+#: task_manager/statuses/views.py:38
+#: task_manager/templates/statuses/statuses.html:6
+msgid "Create status"
+msgstr "Создать статус"
+
+#: task_manager/statuses/views.py:39
+msgid "Create"
+msgstr "Создать"
+
+#: task_manager/statuses/views.py:51
+msgid "Status successfully changed"
+msgstr "Статус успешно изменен"
+
+#: task_manager/statuses/views.py:53
+msgid "Changing status"
+msgstr "Изменение статуса"
+
+#: task_manager/statuses/views.py:54
+#: task_manager/templates/statuses/statuses.html:23
+#: task_manager/templates/users/users.html:24 task_manager/users/views.py:66
+msgid "Change"
+msgstr "Изменить"
+
+#: task_manager/statuses/views.py:62
+msgid "Status successfully deleted"
+msgstr "Статус успешно удален"
 
 #: task_manager/templates/index.html:10
 msgid "Hello from Hexlet!"
@@ -59,6 +100,7 @@ msgid "Users"
 msgstr "Пользователи"
 
 #: task_manager/templates/navbar.html:21
+#: task_manager/templates/statuses/statuses.html:5
 msgid "Statuses"
 msgstr "Статусы"
 
@@ -82,41 +124,45 @@ msgstr "Вход"
 msgid "Registration"
 msgstr "Регистрация"
 
-#: task_manager/templates/users/delete_user.html:9
-msgid "Deleting a user"
-msgstr "Удаление пользователя"
+#: task_manager/templates/statuses/delete.html:9
+msgid "Deleting a status"
+msgstr "Удаление статуса"
 
+#: task_manager/templates/statuses/delete.html:11
 #: task_manager/templates/users/delete_user.html:11
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
+#: task_manager/templates/statuses/delete.html:14
 #: task_manager/templates/users/delete_user.html:14
 msgid "Yes, delete"
 msgstr "Да, удалить"
+
+#: task_manager/templates/statuses/statuses.html:11
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager/templates/statuses/statuses.html:12
+#: task_manager/templates/users/users.html:12
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: task_manager/templates/statuses/statuses.html:24
+#: task_manager/templates/users/users.html:25
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/templates/users/delete_user.html:9
+msgid "Deleting a user"
+msgstr "Удаление пользователя"
 
 #: task_manager/templates/users/users.html:11
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/templates/users/users.html:12
-msgid "Date of creation"
-msgstr "Дата создания"
-
-#: task_manager/templates/users/users.html:24 task_manager/users/views.py:66
-msgid "Change"
-msgstr "Изменить"
-
-#: task_manager/templates/users/users.html:25
-msgid "Delete"
-msgstr "Удалить"
-
 #: task_manager/users/views.py:16
 msgid "You have no rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
-
-#: task_manager/users/views.py:17
-msgid "You are not authorized! Please log in."
-msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
 #: task_manager/users/views.py:41
 msgid "User is successfully registered"
@@ -142,13 +188,18 @@ msgstr "Пользователь успешно изменен"
 msgid "Changing user"
 msgstr "Изменение пользователя"
 
-#: task_manager/views.py:18
+#: task_manager/views.py:17
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:24
+#: task_manager/views.py:23
 msgid "You are unlogged"
 msgstr "Вы разлогинены"
+
+#, fuzzy
+#~| msgid "Create status"
+#~ msgid "Create a status"
+#~ msgstr "Создать статус"
 
 #~ msgid "Confirm password"
 #~ msgstr "Подтверждение пароля"
