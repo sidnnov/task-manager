@@ -8,4 +8,4 @@ class Statuses(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("name"))
 
     def get_absolute_url(self):
-        return reverse('statuses')
+        return reverse("statuses")

@@ -62,9 +62,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    # "django.contrib.auth.middleware.PermissionDeniedMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    # "django.contrib.admindocs.middleware.XViewMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
@@ -97,7 +95,7 @@ DATABASES = {
     #     "ENGINE": "django.db.backends.sqlite3",
     #     "NAME": BASE_DIR / "db.sqlite3",
     # },
-    'default': dj_database_url.config(
+    "default": dj_database_url.config(
         conn_max_age=600,
         conn_health_checks=True,
     ),
@@ -132,8 +130,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en-us"
 
 LANGUAGES = [
-    ('en', 'English'),
-    ('ru', 'Russian'),
+    ("en", "English"),
+    ("ru", "Russian"),
 ]
 
 TIME_ZONE = "UTC"
@@ -153,8 +151,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = "users.CustomUser"
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = reverse_lazy('index')
-LOGOUT_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = reverse_lazy("index")
+LOGOUT_REDIRECT_URL = reverse_lazy("index")

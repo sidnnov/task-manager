@@ -5,20 +5,20 @@ from django.urls import reverse
 
 class CustomUser(AbstractUser):
     groups = models.ManyToManyField(
-        'auth.Group',
+        "auth.Group",
         blank=True,
-        related_name='customuser_set',
-        related_query_name='customuser',
+        related_name="customuser_set",
+        related_query_name="customuser",
     )
     user_permissions = models.ManyToManyField(
-        'auth.Permission',
+        "auth.Permission",
         blank=True,
-        related_name='customuser_set',
-        related_query_name='customuser',
+        related_name="customuser_set",
+        related_query_name="customuser",
     )
 
     def get_absolute_url(self):
-        return reverse('users')
+        return reverse("users")
 
     def __str__(self):
         return self.username

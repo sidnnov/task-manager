@@ -27,14 +27,18 @@
   <body class="min-vh-100 d-flex flex-column">
     {% include "navbar.html" %}
 
-  <main class="container wrapper flex-grow-1 my-4">
+    <main class="container wrapper flex-grow-1 my-4">
 
-    {% bootstrap_messages messages %}
-    
-    {% block content %}
-    {% endblock %}
-  </main>
-
+      {% bootstrap_messages messages %}
+      
+      {% block content %}
+      {% endblock %}
+    </main>
+    <footer>
+      <div class="container my-5 pt-4 border-top">
+        <a target="_blank" href="https://ru.hexlet.io">Hexlet</a>
+      </div>
+    </footer>
   </body>
   {% endblock body %}
 </html>

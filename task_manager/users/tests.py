@@ -13,7 +13,8 @@ class UserTestCase(TestCase):
             "password1": "password",
             "password2": "password",
         }
-        self.user = CustomUser.objects.create(username="test1", password="test1")
+        self.user = CustomUser.objects.create(
+            username="test1", password="test1")
 
     def test_user_create(self):
         response = self.client.post(
@@ -30,19 +31,20 @@ class UserTestCase(TestCase):
 
     def test_user_update(self):
         self.client.force_login(self.user)
-        url = reverse('user_update', kwargs={'pk': self.user.pk})
+        url = reverse("user_update", kwargs={"pk": self.user.pk})
         response = self.client.post(url, self.user_data)
         updated_user = CustomUser.objects.get(pk=self.user.pk)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(updated_user.username, self.user_data["username"])
         self.assertEqual(updated_user.first_name, self.user_data["first_name"])
         self.assertEqual(updated_user.last_name, self.user_data["last_name"])
-        self.assertTrue(updated_user.check_password(self.user_data["password1"]))
-        self.assertRedirects(response, reverse_lazy('users'))
+        self.assertTrue(updated_user.check_password(
+            self.user_data["password1"]))
+        self.assertRedirects(response, reverse_lazy("users"))
 
     def test_user_delete(self):
         self.client.force_login(self.user)
         url = reverse("user_delete", args=[self.user.pk])
         response = self.client.post(url, follow=True)
-        self.assertRedirects(response, reverse_lazy('users'))
+        self.assertRedirects(response, reverse_lazy("users"))
         self.assertFalse(CustomUser.objects.filter(pk=self.user.pk).exists())
