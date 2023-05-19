@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-19 12:01+0100\n"
+"POT-Creation-Date: 2023-05-19 15:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,8 @@ msgstr ""
 msgid "name"
 msgstr "Имя пользователя"
 
-#: task_manager/statuses/views.py:16 task_manager/users/views.py:17
+#: task_manager/statuses/views.py:16 task_manager/tasks/views.py:16
+#: task_manager/users/views.py:17
 msgid "You are not authorized! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
@@ -39,7 +40,7 @@ msgstr "Статус успешно создан"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: task_manager/statuses/views.py:39 task_manager/tasks/views.py:28
+#: task_manager/statuses/views.py:39 task_manager/tasks/views.py:38
 msgid "Create"
 msgstr "Создать"
 
@@ -51,7 +52,7 @@ msgstr "Статус успешно изменен"
 msgid "Changing status"
 msgstr "Изменение статуса"
 
-#: task_manager/statuses/views.py:54 task_manager/tasks/views.py:44
+#: task_manager/statuses/views.py:54 task_manager/tasks/views.py:53
 #: task_manager/templates/statuses/statuses.html:23
 #: task_manager/templates/tasks/tasks.html:29
 #: task_manager/templates/users/users.html:24 task_manager/users/views.py:66
@@ -80,25 +81,29 @@ msgstr "Статус"
 msgid "Performer"
 msgstr "Исполнитель"
 
-#: task_manager/tasks/views.py:25
+#: task_manager/tasks/views.py:35
 msgid "The task was successfully created"
 msgstr "Задание было успешно создано"
 
-#: task_manager/tasks/views.py:27 task_manager/templates/tasks/tasks.html:6
+#: task_manager/tasks/views.py:37 task_manager/templates/tasks/tasks.html:6
 msgid "Create task"
 msgstr "Создать задачу"
 
-#: task_manager/tasks/views.py:41
+#: task_manager/tasks/views.py:50
 msgid "Task successfully changed"
 msgstr "Задача успешно изменена"
 
-#: task_manager/tasks/views.py:43
+#: task_manager/tasks/views.py:52
 msgid "Changing task"
 msgstr "Изменение задачи"
 
-#: task_manager/tasks/views.py:52
+#: task_manager/tasks/views.py:63
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
+
+#: task_manager/tasks/views.py:74
+msgid "The task can be deleted only by its author"
+msgstr "Задачу может удалить только её автор"
 
 #: task_manager/templates/index.html:10
 msgid "Hello from Hexlet!"
@@ -165,15 +170,18 @@ msgid "Registration"
 msgstr "Регистрация"
 
 #: task_manager/templates/statuses/delete.html:9
+#: task_manager/templates/tasks/delete.html:9
 msgid "Deleting a status"
 msgstr "Удаление статуса"
 
 #: task_manager/templates/statuses/delete.html:11
+#: task_manager/templates/tasks/delete.html:11
 #: task_manager/templates/users/delete_user.html:11
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
 #: task_manager/templates/statuses/delete.html:14
+#: task_manager/templates/tasks/delete.html:14
 #: task_manager/templates/users/delete_user.html:14
 msgid "Yes, delete"
 msgstr "Да, удалить"
