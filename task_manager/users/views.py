@@ -3,11 +3,14 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic.edit import FormView, UpdateView, DeleteView
-from task_manager.users.forms import CustomUserCreationForm
-from task_manager.users.models import CustomUser
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib import messages
+from django.db.models import ProtectedError
+
+
+from task_manager.users.forms import CustomUserCreationForm
+from task_manager.users.models import CustomUser
 
 
 # Create your views here.
@@ -54,6 +57,14 @@ class DeleteUserView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("users")
     template_name = "users/delete_user.html"
     success_message = _("User has been successfully deleted")
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(
+                request, _("Unable to delete a user because he is being used"))
+            return redirect("users")
 
 
 class UpdateUserView(UserPermissionMixin, SuccessMessageMixin, UpdateView):

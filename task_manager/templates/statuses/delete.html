@@ -6,9 +6,9 @@
 
 {% block content %}
 
-  <h1 class="display-4 my-5">{% translate 'Deleting a status' %}</h1>
+  <h1 class="display-4 my-5">{% translate 'Deleting status' %}</h1>
   
-  <p>{% translate 'Are you sure you want to delete' %} {{ object.title }}!?</p>
+  <p>{% translate 'Are you sure you want to delete' %} {{ object.name }}!?</p>
   <form method="post">
     {% csrf_token %}
     <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">

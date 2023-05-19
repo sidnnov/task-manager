@@ -17,7 +17,7 @@
             {% for status in statuses %}
             <tr>
               <th scope="row">{{ status.id }}</th>
-                <td>{{ status.title }}</td>
+                <td>{{ status.name }}</td>
                 <td>{{ status.created_at }}</td>
                 <td>
                     <a href="{% url 'update_status' status.id %}">{% translate "Change" %}</a><br>

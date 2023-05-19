@@ -1,18 +1,18 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import View
-from task_manager.statuses.forms import StatusModel
-from task_manager.statuses.models import Statuses
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import FormView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
+from task_manager.statuses.forms import StatusModel
+from task_manager.statuses.models import Statuses
+
 
 # Create your views here.
 class StatusLoginMixin(LoginRequiredMixin):
-    # login_url = reverse_lazy("login")
     not_auth_message = _("You are not authorized! Please log in.")
 
     def handle_no_permission(self, *args, **kwargs):
