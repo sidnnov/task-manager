@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-17 18:29+0100\n"
+"POT-Creation-Date: 2023-05-19 12:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Статус успешно создан"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: task_manager/statuses/views.py:39 task_manager/tasks/views.py:27
+#: task_manager/statuses/views.py:39 task_manager/tasks/views.py:28
 msgid "Create"
 msgstr "Создать"
 
@@ -51,7 +51,7 @@ msgstr "Статус успешно изменен"
 msgid "Changing status"
 msgstr "Изменение статуса"
 
-#: task_manager/statuses/views.py:54
+#: task_manager/statuses/views.py:54 task_manager/tasks/views.py:44
 #: task_manager/templates/statuses/statuses.html:23
 #: task_manager/templates/tasks/tasks.html:29
 #: task_manager/templates/users/users.html:24 task_manager/users/views.py:66
@@ -72,13 +72,33 @@ msgstr "Имя"
 msgid "Description"
 msgstr "Описание"
 
-#: task_manager/tasks/views.py:24
+#: task_manager/tasks/models.py:13 task_manager/templates/tasks/tasks.html:12
+msgid "Status"
+msgstr "Статус"
+
+#: task_manager/tasks/models.py:14 task_manager/templates/tasks/tasks.html:14
+msgid "Performer"
+msgstr "Исполнитель"
+
+#: task_manager/tasks/views.py:25
 msgid "The task was successfully created"
 msgstr "Задание было успешно создано"
 
-#: task_manager/tasks/views.py:26 task_manager/templates/tasks/tasks.html:6
+#: task_manager/tasks/views.py:27 task_manager/templates/tasks/tasks.html:6
 msgid "Create task"
 msgstr "Создать задачу"
+
+#: task_manager/tasks/views.py:41
+msgid "Task successfully changed"
+msgstr "Задача успешно изменена"
+
+#: task_manager/tasks/views.py:43
+msgid "Changing task"
+msgstr "Изменение задачи"
+
+#: task_manager/tasks/views.py:52
+msgid "Task successfully deleted"
+msgstr "Задача успешно удалена"
 
 #: task_manager/templates/index.html:10
 msgid "Hello from Hexlet!"
@@ -169,16 +189,6 @@ msgstr "Дата создания"
 #: task_manager/templates/users/users.html:25
 msgid "Delete"
 msgstr "Удалить"
-
-#: task_manager/templates/tasks/create.html:9
-#: task_manager/templates/tasks/tasks.html:12
-msgid "Status"
-msgstr "Статус"
-
-#: task_manager/templates/tasks/create.html:10
-#: task_manager/templates/tasks/tasks.html:14
-msgid "Performer"
-msgstr "Исполнитель"
 
 #: task_manager/templates/tasks/tasks.html:13
 msgid "Author"

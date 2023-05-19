@@ -26,8 +26,8 @@
                 <td class="text-break" style="width: 15%;">{{ task.performer.first_name }} {{ task.performer.last_name }}</td>
                 <td style="width: 13%;">{{ task.created_at }}</td>
                 <td style="width: 5%;">
-                    <a href="{% url 'user_update' user.id %}">{% translate "Change" %}</a><br>
-                    <a href="{% url 'user_delete' user.id %}" rel="nofollow">{% translate "Delete" %}</a>
+                    <a href="{% url 'update_task' task.id %}">{% translate "Change" %}</a><br>
+                    <a href="{% url 'delete_task' task.id %}" rel="nofollow">{% translate "Delete" %}</a>
                 </td>
             </tr>
             {% endfor %}

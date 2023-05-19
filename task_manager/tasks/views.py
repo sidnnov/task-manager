@@ -5,6 +5,7 @@ from task_manager.tasks.forms import TasksForm
 from task_manager.tasks.models import Tasks
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 # Create your views here.
@@ -16,10 +17,10 @@ class TasksView(View):
             "tasks": tasks})
 
 
-class CreateTaskView(CreateView):
+class CreateTaskView(SuccessMessageMixin, CreateView):
     model = Tasks
     form_class = TasksForm
-    template_name = 'tasks/create.html'
+    template_name = "tasks/create.html"
     success_url = reverse_lazy("tasks")
     success_message = _("The task was successfully created")
     extra_context = {
@@ -32,16 +33,20 @@ class CreateTaskView(CreateView):
         form.save()
         return super().form_valid(form)
 
-# class CreateTaskView(CreateView):
-#     template_name = "tasks/create.html"
-#     form_class = TasksModel
-#     success_url = reverse_lazy("tasks")
-#     success_message = _("The task was successfully created")
-#     extra_context = {
-#         "table_name": _("Create task"),
-#         "button_name": _("Create"),
-#     }
 
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
+class UpdateTaskView(SuccessMessageMixin, UpdateView):
+    model = Tasks
+    form_class = TasksForm
+    template_name = "tasks/create.html"
+    success_message = _("Task successfully changed")
+    extra_context = {
+        "table_name": _("Changing task"),
+        "button_name": _("Change"),
+    }
+
+
+class DeleteTaskView(SuccessMessageMixin, DeleteView):
+    model = Tasks
+    template_name = "tasks/delete.html"
+    success_url = reverse_lazy("tasks")
+    success_message = _("Task successfully deleted")
