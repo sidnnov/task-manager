@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+      <h1 class="display-4">{% translate "Tasks" %}</h1>
+      <a class="nav-link" href="/tasks/create/">{% translate "Create task" %}</a>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 100px;">ID</th>
+            <th scope="col">{% translate "Name" %}</th>
+            <th scope="col">{% translate "Status" %}</th>
+            <th scope="col">{% translate "Author" %}</th>
+            <th scope="col" style="width: 155px;">{% translate "Performer" %}</th>
+            <th scope="col" style="width: 155px;">{% translate "Date of creation" %}</th>
+            <th scope="col" style="width: 15px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+              <th scope="row">{{ task.id }}</th>
+                <td>{{ task.task_name }}</td>
+                <td>{{ task.status.title }}</td>
+                <td>{{ task.author }}</td>
+                <td>{{ task.performer.first_name }} {{ task.performer.last_name }}</td>
+                <td>{{ task.date_joined }}</td>
+                <td>
+                    <a href="{% url 'user_update' user.id %}">{% translate "Change" %}</a><br>
+                    <a href="{% url 'user_delete' user.id %}" rel="nofollow">{% translate "Delete" %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

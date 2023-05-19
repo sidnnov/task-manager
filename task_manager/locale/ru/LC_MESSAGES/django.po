@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-15 23:30+0100\n"
+"POT-Creation-Date: 2023-05-17 18:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Статус успешно создан"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: task_manager/statuses/views.py:39
+#: task_manager/statuses/views.py:39 task_manager/tasks/views.py:27
 msgid "Create"
 msgstr "Создать"
 
@@ -53,6 +53,7 @@ msgstr "Изменение статуса"
 
 #: task_manager/statuses/views.py:54
 #: task_manager/templates/statuses/statuses.html:23
+#: task_manager/templates/tasks/tasks.html:29
 #: task_manager/templates/users/users.html:24 task_manager/users/views.py:66
 msgid "Change"
 msgstr "Изменить"
@@ -60,6 +61,24 @@ msgstr "Изменить"
 #: task_manager/statuses/views.py:62
 msgid "Status successfully deleted"
 msgstr "Статус успешно удален"
+
+#: task_manager/tasks/models.py:10
+#: task_manager/templates/statuses/statuses.html:11
+#: task_manager/templates/tasks/tasks.html:11
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager/tasks/models.py:11
+msgid "Description"
+msgstr "Описание"
+
+#: task_manager/tasks/views.py:24
+msgid "The task was successfully created"
+msgstr "Задание было успешно создано"
+
+#: task_manager/tasks/views.py:26 task_manager/templates/tasks/tasks.html:6
+msgid "Create task"
+msgstr "Создать задачу"
 
 #: task_manager/templates/index.html:10
 msgid "Hello from Hexlet!"
@@ -109,6 +128,7 @@ msgid "Tags"
 msgstr "Метки"
 
 #: task_manager/templates/navbar.html:27
+#: task_manager/templates/tasks/tasks.html:5
 msgid "Tasks"
 msgstr "Задачи"
 
@@ -138,19 +158,31 @@ msgstr "Вы уверены, что хотите удалить"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: task_manager/templates/statuses/statuses.html:11
-msgid "Name"
-msgstr "Имя"
-
 #: task_manager/templates/statuses/statuses.html:12
+#: task_manager/templates/tasks/tasks.html:15
 #: task_manager/templates/users/users.html:12
 msgid "Date of creation"
 msgstr "Дата создания"
 
 #: task_manager/templates/statuses/statuses.html:24
+#: task_manager/templates/tasks/tasks.html:30
 #: task_manager/templates/users/users.html:25
 msgid "Delete"
 msgstr "Удалить"
+
+#: task_manager/templates/tasks/create.html:9
+#: task_manager/templates/tasks/tasks.html:12
+msgid "Status"
+msgstr "Статус"
+
+#: task_manager/templates/tasks/create.html:10
+#: task_manager/templates/tasks/tasks.html:14
+msgid "Performer"
+msgstr "Исполнитель"
+
+#: task_manager/templates/tasks/tasks.html:13
+msgid "Author"
+msgstr "Автор"
 
 #: task_manager/templates/users/delete_user.html:9
 msgid "Deleting a user"
@@ -195,11 +227,6 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:23
 msgid "You are unlogged"
 msgstr "Вы разлогинены"
-
-#, fuzzy
-#~| msgid "Create status"
-#~ msgid "Create a status"
-#~ msgstr "Создать статус"
 
 #~ msgid "Confirm password"
 #~ msgstr "Подтверждение пароля"
