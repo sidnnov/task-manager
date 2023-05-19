@@ -18,7 +18,7 @@
             <tr>
               <th scope="row">{{ status.id }}</th>
                 <td>{{ status.title }}</td>
-                <td>{{ user.date_joined }}</td>
+                <td>{{ status.created_at }}</td>
                 <td>
                     <a href="{% url 'update_status' status.id %}">{% translate "Change" %}</a><br>
                     <a href="{% url 'delete_status' status.id %}" rel="nofollow">{% translate "Delete" %}</a>

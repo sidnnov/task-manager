@@ -11,7 +11,8 @@ class Tasks(models.Model):
     description = models.TextField(verbose_name=_("Description"))
     author = models.ForeignKey(CustomUser, on_delete=models.PROTECT, null=True)
     status = models.ForeignKey(Statuses, on_delete=models.PROTECT, verbose_name=_("Status"))
-    performer = models.ForeignKey(CustomUser, on_delete=models.PROTECT, null=True, related_name='performed_tasks', verbose_name=_("Performer"))
+    performer = models.ForeignKey(CustomUser, on_delete=models.PROTECT, null=True, related_name="performed_tasks", verbose_name=_("Performer"))
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
         return reverse("tasks")
