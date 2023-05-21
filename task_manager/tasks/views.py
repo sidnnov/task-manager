@@ -7,7 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 
-from task_manager.tasks.forms import TasksForm
+from task_manager.tasks.forms import TasksFilterForm, TasksForm
 from task_manager.tasks.models import Tasks
 
 
@@ -24,7 +24,26 @@ class TaskLoginMixin(LoginRequiredMixin):
 class TasksView(TaskLoginMixin, View):
     def get(self, request):
         tasks = Tasks.objects.all()
-        return render(request, "tasks/tasks.html", context={"tasks": tasks})
+        form = TasksFilterForm(request.GET)
+        status = request.GET.get('status')
+        executor = request.GET.get('executor')
+        self_tasks = request.GET.get('self_tasks')
+
+        if self_tasks and self_tasks == 'on':
+            tasks = tasks.filter(author=request.user)
+        if status:
+            tasks = tasks.filter(status=status)
+        if executor:
+            tasks = tasks.filter(executor=executor)
+
+        context = {
+            'tasks': tasks,
+            'form': form,
+            'selected_status': status,
+            'selected_executor': executor,
+            'self_tasks': self_tasks,
+        }
+        return render(request, "tasks/tasks.html", context)
 
 
 class TaskCardView(TaskLoginMixin, View):

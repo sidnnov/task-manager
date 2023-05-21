@@ -1,9 +1,31 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
+{% load bootstrap4 %}
+
 {% block content %}
       <h1 class="display-4">{% translate "Tasks" %}</h1>
+
       <a class="nav-link" href="/tasks/create/">{% translate "Create task" %}</a>
+
+      <div class="card mb-3">
+        <div class="card-body bg-light">
+          <div class="row">
+            <div class="col-md-5">
+                <form method="get" class="filter-form">
+
+                  {% bootstrap_form form %}
+
+                  <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="{% translate 'Show' %}">
+                  </div>
+
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <table class="table table-striped">
         <thead>
           <tr>
