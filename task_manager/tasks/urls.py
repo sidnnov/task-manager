@@ -4,6 +4,7 @@ from task_manager.tasks.views import (
     CreateTaskView,
     UpdateTaskView,
     DeleteTaskView,
+    TaskCardView,
 )
 
 
@@ -12,4 +13,5 @@ urlpatterns = [
     path("create/", CreateTaskView.as_view(), name="create_task"),
     path("<int:pk>/update/", UpdateTaskView.as_view(), name="update_task"),
     path("<int:pk>/delete/", DeleteTaskView.as_view(), name="delete_task"),
+    path("<int:pk>/", TaskCardView.as_view(), name="card_task"),
 ]

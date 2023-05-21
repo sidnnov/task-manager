@@ -11,7 +11,7 @@
             <th scope="col">{% translate "Name" %}</th>
             <th scope="col">{% translate "Status" %}</th>
             <th scope="col">{% translate "Author" %}</th>
-            <th scope="col">{% translate "Performer" %}</th>
+            <th scope="col">{% translate "Executor" %}</th>
             <th scope="col">{% translate "Date of creation" %}</th>
             <th scope="col"></th>
           </tr>
@@ -20,7 +20,9 @@
             {% for task in tasks %}
             <tr>
               <th scope="row" style="width: 2%;">{{ task.id }}</th>
-                <td class="text-break" style="width: 25%;">{{ task.task }}</td>
+                <td class="text-break" style="width: 25%;">
+                  <a href="{% url 'card_task' task.id %}">{{ task.task }}</a>
+                </td>
                 <td class="text-break" style="width: 20%;">{{ task.status.name }}</td>
                 <td class="text-break" style="width: 15%;">{{ task.author }}</td>
                 <td class="text-break" style="width: 15%;">{{ task.executor.first_name }} {{ task.executor.last_name }}</td>

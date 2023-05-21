@@ -37,6 +37,13 @@ class IndexView(View):
         return render(request, "users/users.html", context={"users": users})
 
 
+class ProfileUserView(View):
+
+    def get(self, request, *args, **kwargs):
+        user = CustomUser.objects.get(pk=kwargs.get("pk"))
+        return render(request, "users/profile.html", context={"user": user})
+
+
 class UserCreateView(SuccessMessageMixin, FormView):
     template_name = "users/create.html"
     form_class = CustomUserCreationForm

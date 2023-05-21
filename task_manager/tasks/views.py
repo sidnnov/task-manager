@@ -27,6 +27,12 @@ class TasksView(TaskLoginMixin, View):
         return render(request, "tasks/tasks.html", context={"tasks": tasks})
 
 
+class TaskCardView(TaskLoginMixin, View):
+    def get(self, request, *args, **kwargs):
+        task = Tasks.objects.get(pk=kwargs.get('pk'))
+        return render(request, "tasks/card.html", context={"task": task})
+
+
 class CreateTaskView(TaskLoginMixin, SuccessMessageMixin, CreateView):
     model = Tasks
     form_class = TasksForm

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+<div class="container wrapper flex-grow-1">
+    <h1 class="display-4">{% translate "Profile" %}</h1>
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h2>{{ user.username }}</h2>
+        </div>
+        <div class="card-body bg-light">
+          <p>1</p>
+          <hr>
+          <div class="container">
+            <div class="row p-1">
+              <div class="col">{% translate "Name" %}</div>
+              <div class="col">{{ user.first_name }}</div>
+            </div>
+            <div class="row p-1">
+              <div class="col">{% translate "Last name" %}</div>
+              <div class="col"> {{ user.last_name }}</div>
+            </div>
+            <div class="row p-1">
+              <div class="col">{% translate "Date of creation" %}</div>
+              <div class="col">{{ user.date_joined }}</div>
+            </div>
+            {% if request.user.is_authenticated %}
+              <div class="row p-1">
+                <div class="col">
+                  <a href="{% url 'user_update' user.id %}">{% translate "Change" %}</a><br>
+                  <a href="{% url 'user_delete' user.id %}" rel="nofollow">{% translate "Delete" %}</a>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
