@@ -6,6 +6,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import FormView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.db.models import ProtectedError
 
 from task_manager.statuses.forms import StatusModel
 from task_manager.statuses.models import Statuses
@@ -22,11 +23,9 @@ class StatusLoginMixin(LoginRequiredMixin):
 
 
 class StatusesView(StatusLoginMixin, View):
-
     def get(self, request):
         statuses = Statuses.objects.all()
-        return render(request, "statuses/statuses.html", context={
-            "statuses": statuses})
+        return render(request, "statuses/statuses.html", context={"statuses": statuses})
 
 
 class CreateStatusView(StatusLoginMixin, SuccessMessageMixin, FormView):
@@ -60,3 +59,13 @@ class DeleteStatusView(StatusLoginMixin, SuccessMessageMixin, DeleteView):
     template_name = "statuses/delete.html"
     success_url = reverse_lazy("statuses")
     success_message = _("Status successfully deleted")
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(
+                request,
+                _("It is impossible to delete a status because it is in use"),
+            )
+            return redirect("statuses")

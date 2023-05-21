@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-19 16:56+0100\n"
+"POT-Creation-Date: 2023-05-19 17:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,42 +20,46 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/statuses/views.py:16 task_manager/tasks/views.py:16
+#: task_manager/statuses/views.py:17 task_manager/tasks/views.py:16
 #: task_manager/users/views.py:20
 msgid "You are not authorized! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: task_manager/statuses/views.py:36
+#: task_manager/statuses/views.py:35
 msgid "Status successfully created"
 msgstr "Статус успешно создан"
 
-#: task_manager/statuses/views.py:38
+#: task_manager/statuses/views.py:37
 #: task_manager/templates/statuses/statuses.html:6
 msgid "Create status"
 msgstr "Создать статус"
 
-#: task_manager/statuses/views.py:39 task_manager/tasks/views.py:38
+#: task_manager/statuses/views.py:38 task_manager/tasks/views.py:38
 msgid "Create"
 msgstr "Создать"
 
-#: task_manager/statuses/views.py:51
+#: task_manager/statuses/views.py:50
 msgid "Status successfully changed"
 msgstr "Статус успешно изменен"
 
-#: task_manager/statuses/views.py:53
+#: task_manager/statuses/views.py:52
 msgid "Changing status"
 msgstr "Изменение статуса"
 
-#: task_manager/statuses/views.py:54 task_manager/tasks/views.py:53
+#: task_manager/statuses/views.py:53 task_manager/tasks/views.py:53
 #: task_manager/templates/statuses/statuses.html:23
 #: task_manager/templates/tasks/tasks.html:29
 #: task_manager/templates/users/users.html:24 task_manager/users/views.py:77
 msgid "Change"
 msgstr "Изменить"
 
-#: task_manager/statuses/views.py:62
+#: task_manager/statuses/views.py:61
 msgid "Status successfully deleted"
 msgstr "Статус успешно удален"
+
+#: task_manager/statuses/views.py:69
+msgid "It is impossible to delete a status because it is in use"
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: task_manager/tasks/models.py:10
 #: task_manager/templates/statuses/statuses.html:11
