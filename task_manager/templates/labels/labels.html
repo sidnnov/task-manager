@@ -2,8 +2,8 @@
 {% load i18n %}
 
 {% block content %}
-      <h1 class="display-4">{% translate "Labeles" %}</h1>
-      <a class="nav-link" href="{% url 'create_labele' %}">{% translate "Create labele" %}</a>
+      <h1 class="display-4">{% translate "Labels" %}</h1>
+      <a class="nav-link" href="{% url 'create_label' %}">{% translate "Create label" %}</a>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -14,19 +14,17 @@
           </tr>
         </thead>
         <tbody>
-            {% for labele in labeles %}
+            {% for label in labels %}
             <tr>
-              <th scope="row">{{ labele.id }}</th>
-                <td>{{ labele.name }}</td>
-                <td>{{ labele.created_at }}</td>
+              <th scope="row">{{ label.id }}</th>
+                <td>{{ label.name }}</td>
+                <td>{{ label.created_at }}</td>
                 <td>
-                    <a href="#">{% translate "Change" %}</a><br>
-                    <a href="#" rel="nofollow">{% translate "Delete" %}</a>
+                    <a href="{% url 'update_label' label.id %}">{% translate "Change" %}</a><br>
+                    <a href="{% url 'delete_label' label.id %}" rel="nofollow">{% translate "Delete" %}</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
       </table>
 {% endblock %}
-<!-- {% url 'update_labele' labele.id %}
-{% url 'delete_labele' labele.id %} -->
