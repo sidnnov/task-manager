@@ -1,6 +1,5 @@
 from django.urls import reverse, reverse_lazy
 from django.test import TestCase, Client
-
 from task_manager.users.models import CustomUser
 from .models import Statuses
 
@@ -26,7 +25,7 @@ class StatusesTestCase(TestCase):
         self.assertEqual(status.name, self.status_data["name"])
         self.assertRedirects(response, reverse_lazy("statuses"))
 
-    def test_user_update(self):
+    def test_update_status(self):
         url = reverse("update_status", kwargs={"pk": self.status.pk})
         response = self.client.post(url, self.status_data)
         update_status = Statuses.objects.get(pk=self.status.pk)
@@ -34,7 +33,7 @@ class StatusesTestCase(TestCase):
         self.assertEqual(update_status.name, self.status_data["name"])
         self.assertRedirects(response, reverse_lazy("statuses"))
 
-    def test_user_delete(self):
+    def test_delete_status(self):
         url = reverse("delete_status", args=[self.status.pk])
         response = self.client.post(url, follow=True)
         self.assertRedirects(response, reverse_lazy("statuses"))

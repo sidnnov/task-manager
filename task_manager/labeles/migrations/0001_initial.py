@@ -6,11 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
     initial = True
 
-    dependencies = []
+    dependencies = [
+        ("tasks", "__first__"),
+    ]
 
     operations = [
         migrations.CreateModel(
-            name="Statuses",
+            name="Labeles",
             fields=[
                 (
                     "id",
@@ -23,6 +25,7 @@ class Migration(migrations.Migration):
                 ),
                 ("name", models.CharField(max_length=255, verbose_name="Name")),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("labele", models.ManyToManyField(to="tasks.tasks")),
             ],
         ),
     ]

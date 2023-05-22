@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+      <h1 class="display-4">{% translate "Labeles" %}</h1>
+      <a class="nav-link" href="{% url 'create_labele' %}">{% translate "Create labele" %}</a>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 100px;">ID</th>
+            <th scope="col">{% translate "Name" %}</th>
+            <th scope="col" style="width: 155px;">{% translate "Date of creation" %}</th>
+            <th scope="col" style="width: 15px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for labele in labeles %}
+            <tr>
+              <th scope="row">{{ labele.id }}</th>
+                <td>{{ labele.name }}</td>
+                <td>{{ labele.created_at }}</td>
+                <td>
+                    <a href="#">{% translate "Change" %}</a><br>
+                    <a href="#" rel="nofollow">{% translate "Delete" %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}
+<!-- {% url 'update_labele' labele.id %}
+{% url 'delete_labele' labele.id %} -->
