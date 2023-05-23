@@ -3,12 +3,11 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic.edit import FormView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import ProtectedError
 
-from task_manager.statuses.forms import StatusModel
 from task_manager.statuses.models import Statuses
 
 
@@ -25,12 +24,14 @@ class StatusLoginMixin(LoginRequiredMixin):
 class StatusesView(StatusLoginMixin, View):
     def get(self, request):
         statuses = Statuses.objects.all()
-        return render(request, "statuses/statuses.html", context={"statuses": statuses})
+        return render(
+            request, "statuses/statuses.html", context={"statuses": statuses})
 
 
-class CreateStatusView(StatusLoginMixin, SuccessMessageMixin, FormView):
+class CreateStatusView(StatusLoginMixin, SuccessMessageMixin, CreateView):
+    model = Statuses
+    fields = ["name"]
     template_name = "statuses/create.html"
-    form_class = StatusModel
     success_url = reverse_lazy("statuses")
     success_message = _("Status successfully created")
     extra_context = {
@@ -45,8 +46,8 @@ class CreateStatusView(StatusLoginMixin, SuccessMessageMixin, FormView):
 
 class UpdateStatusView(StatusLoginMixin, SuccessMessageMixin, UpdateView):
     model = Statuses
+    fields = ["name"]
     template_name = "statuses/create.html"
-    form_class = StatusModel
     success_message = _("Status successfully changed")
     extra_context = {
         "table_name": _("Changing status"),

@@ -1,4 +1,5 @@
 from django import forms
+from task_manager.labels.models import Labels
 from task_manager.statuses.models import Statuses
 from task_manager.tasks.models import Tasks
 from django.utils.translation import gettext_lazy as _
@@ -6,11 +7,11 @@ from django.utils.translation import gettext_lazy as _
 from task_manager.users.models import CustomUser
 
 
-class TasksForm(forms.ModelForm):
+class TasksCreateForm(forms.ModelForm):
 
     class Meta:
         model = Tasks
-        fields = ["task", "description", "status", "executor"]
+        fields = ["task", "description", "status", "executor", "labels"]
 
 
 class TasksFilterForm(forms.Form):
@@ -20,6 +21,10 @@ class TasksFilterForm(forms.Form):
     )
     executor = forms.ModelChoiceField(
         queryset=CustomUser.objects.all(),
+        required=False,
+    )
+    labels = forms.ModelChoiceField(
+        queryset=Labels.objects.all(),
         required=False,
     )
     self_tasks = forms.BooleanField(
@@ -33,4 +38,6 @@ class TasksFilterForm(forms.Form):
         self.fields["status"].label = _("Status")
         self.fields["executor"].empty_label = _("All")
         self.fields["executor"].label = _("Executor")
+        self.fields["labels"].empty_label = _("All")
+        self.fields["labels"].label = _("Label")
         self.fields["self_tasks"].label = _("Only your tasks")

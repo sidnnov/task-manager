@@ -3,13 +3,11 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic.edit import FormView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import ProtectedError
 from task_manager.labels.models import Labels
-
-from task_manager.labels.forms import LabelsModel
 
 
 # Create your views here.
@@ -29,9 +27,10 @@ class LabelsView(LabelLoginMixin, View):
             request, "labels/labels.html", context={"labels": labels})
 
 
-class CreateLabelView(LabelLoginMixin, SuccessMessageMixin, FormView):
+class CreateLabelView(LabelLoginMixin, SuccessMessageMixin, CreateView):
+    model = Labels
     template_name = "labels/create.html"
-    form_class = LabelsModel
+    fields = ["name"]
     success_url = reverse_lazy("labels")
     success_message = _("Label successfully created")
     extra_context = {
@@ -46,7 +45,7 @@ class CreateLabelView(LabelLoginMixin, SuccessMessageMixin, FormView):
 
 class UpdateLabelView(LabelLoginMixin, SuccessMessageMixin, UpdateView):
     model = Labels
-    form_class = LabelsModel
+    fields = ["name"]
     template_name = "labels/create.html"
     success_message = _("Label successfully changed")
     extra_context = {
