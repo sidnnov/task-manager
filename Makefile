@@ -1,31 +1,25 @@
-PORT ?= 8000
+LOCAL := poetry run python manage.py
+
+install:
+	poetry install
+
+uninstall:
+	python3 -m pip uninstall hexlet-code
+
+lint:
+	poetry run flake8 task_manager
+
+messages:
+	poetry run django-admin makemessages -l ru
+
+compilemess:
+	poetry run django-admin compilemessages
+
+server:
+	$(LOCAL) runserver
+
+migrations:
+	$(LOCAL) makemigrations
 
 migrate:
-	poetry run python manage.py makemigrations task_manager
-	poetry run python manage.py migrate
-
-# install:
-# 	poetry install
-
-# build:
-# 	poetry build
-
-dev:
-	python manage.py runserver
-
-# start:
-# 	gunicorn task_manager.wsgi
-
-# selfcheck:
-# 	poetry check
-
-# lint:
-# 	poetry run flake8 task_manager
-
-# pytest:
-# 	poetry run pytest
-
-# check: selfcheck pytest lint
-
-# test-coverage:
-# 	poetry run pytest --cov=task_manager --cov-report xml
+	$(LOCAL) migrate
