@@ -9,6 +9,9 @@ uninstall:
 lint:
 	poetry run flake8 task_manager
 
+test-coverage:
+	poetry run coverage run manage.py test
+
 messages:
 	poetry run django-admin makemessages -l ru
 
