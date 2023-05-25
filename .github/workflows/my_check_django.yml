@@ -1,10 +1,6 @@
 name: My check
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
   build:
@@ -20,13 +16,11 @@ jobs:
     - name: Install Dependencies
       run: |
            pip install poetry
-           poetry update
            make install
-      env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DEBUG: True
 
     - name: Run linter and pytest
+      env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
             make lint
             make test
