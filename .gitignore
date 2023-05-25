@@ -11,3 +11,4 @@ coverage.xml
 db.sqlite3
 task_manager/users/test_test.py
 _Makefile
+.flake8
