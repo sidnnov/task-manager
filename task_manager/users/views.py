@@ -59,6 +59,17 @@ class UserCreateView(SuccessMessageMixin, FormView):
         return super().form_valid(form)
 
 
+class UpdateUserView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
+    model = CustomUser
+    template_name = "users/create.html"
+    form_class = CustomUserCreationForm
+    success_message = _("User has been successfully changed")
+    extra_context = {
+        "table_name": _("Changing user"),
+        "button_name": _("Change"),
+    }
+
+
 class DeleteUserView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     model = CustomUser
     success_url = reverse_lazy("users")
@@ -72,14 +83,3 @@ class DeleteUserView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
             messages.error(
                 request, _("Unable to delete a user because he is being used"))
             return redirect("users")
-
-
-class UpdateUserView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
-    model = CustomUser
-    template_name = "users/create.html"
-    form_class = CustomUserCreationForm
-    success_message = _("User has been successfully changed")
-    extra_context = {
-        "table_name": _("Changing user"),
-        "button_name": _("Change"),
-    }

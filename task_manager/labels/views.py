@@ -21,18 +21,14 @@ class LabelsView(AuthorizationMixin, View):
 
 class CreateLabelView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Labels
-    template_name = "labels/create.html"
     fields = ["name"]
+    template_name = "labels/create.html"
     success_url = reverse_lazy("labels")
     success_message = _("Label successfully created")
     extra_context = {
         "table_name": _("Create label"),
         "button_name": _("Create"),
     }
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
 
 
 class UpdateLabelView(AuthorizationMixin, SuccessMessageMixin, UpdateView):

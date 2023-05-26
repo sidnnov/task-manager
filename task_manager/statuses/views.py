@@ -30,10 +30,6 @@ class CreateStatusView(AuthorizationMixin, SuccessMessageMixin, CreateView):
         "button_name": _("Create"),
     }
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
 
 class UpdateStatusView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Statuses
