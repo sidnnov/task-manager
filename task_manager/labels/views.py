@@ -4,30 +4,22 @@ from django.views import View
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import ProtectedError
+
 from task_manager.labels.models import Labels
+from task_manager.utilities import AuthorizationMixin
 
 
 # Create your views here.
-class LabelLoginMixin(LoginRequiredMixin):
-    not_auth_message = _("You are not authorized! Please log in.")
-
-    def handle_no_permission(self, *args, **kwargs):
-        if not self.request.user.is_authenticated:
-            messages.error(self.request, self.not_auth_message)
-            return redirect("login")
-
-
-class LabelsView(LabelLoginMixin, View):
+class LabelsView(AuthorizationMixin, View):
     def get(self, request):
         labels = Labels.objects.all()
         return render(
             request, "labels/labels.html", context={"labels": labels})
 
 
-class CreateLabelView(LabelLoginMixin, SuccessMessageMixin, CreateView):
+class CreateLabelView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Labels
     template_name = "labels/create.html"
     fields = ["name"]
@@ -43,7 +35,7 @@ class CreateLabelView(LabelLoginMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateLabelView(LabelLoginMixin, SuccessMessageMixin, UpdateView):
+class UpdateLabelView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Labels
     fields = ["name"]
     template_name = "labels/create.html"
@@ -54,7 +46,7 @@ class UpdateLabelView(LabelLoginMixin, SuccessMessageMixin, UpdateView):
     }
 
 
-class DeleteLabelView(LabelLoginMixin, SuccessMessageMixin, DeleteView):
+class DeleteLabelView(AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = Labels
     template_name = "labels/delete.html"
     success_url = reverse_lazy("labels")

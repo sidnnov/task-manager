@@ -4,24 +4,16 @@ from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib import messages
 
 from task_manager.tasks.forms import TasksCreateForm, TasksFilterForm
 from task_manager.tasks.models import Tasks
+from task_manager.utilities import AuthorizationMixin
 
 
 # Create your views here.
-class TaskLoginMixin(LoginRequiredMixin):
-    not_auth_message = _("You are not authorized! Please log in.")
-
-    def handle_no_permission(self, *args, **kwargs):
-        if not self.request.user.is_authenticated:
-            messages.error(self.request, self.not_auth_message)
-            return redirect("login")
-
-
-class TasksView(TaskLoginMixin, View):
+class TasksView(AuthorizationMixin, View):
     def get(self, request):
         tasks = Tasks.objects.all()
         form = TasksFilterForm(request.GET)
@@ -51,13 +43,13 @@ class TasksView(TaskLoginMixin, View):
         return render(request, "tasks/tasks.html", context)
 
 
-class TaskCardView(TaskLoginMixin, View):
+class TaskCardView(AuthorizationMixin, View):
     def get(self, request, *args, **kwargs):
         task = Tasks.objects.get(pk=kwargs.get("pk"))
         return render(request, "tasks/card.html", context={"task": task})
 
 
-class CreateTaskView(TaskLoginMixin, SuccessMessageMixin, CreateView):
+class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Tasks
     form_class = TasksCreateForm
     template_name = "tasks/create.html"
@@ -73,7 +65,7 @@ class CreateTaskView(TaskLoginMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateTaskView(TaskLoginMixin, SuccessMessageMixin, UpdateView):
+class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Tasks
     form_class = TasksCreateForm
     template_name = "tasks/create.html"
@@ -85,7 +77,7 @@ class UpdateTaskView(TaskLoginMixin, SuccessMessageMixin, UpdateView):
 
 
 class DeleteTaskView(
-    TaskLoginMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
+    AuthorizationMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
 ):
     model = Tasks
     template_name = "tasks/delete.html"

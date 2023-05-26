@@ -4,31 +4,22 @@ from django.views import View
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import ProtectedError
 
 from task_manager.statuses.models import Statuses
+from task_manager.utilities import AuthorizationMixin
 
 
 # Create your views here.
-class StatusLoginMixin(LoginRequiredMixin):
-    not_auth_message = _("You are not authorized! Please log in.")
-
-    def handle_no_permission(self, *args, **kwargs):
-        if not self.request.user.is_authenticated:
-            messages.error(self.request, self.not_auth_message)
-            return redirect("login")
-
-
-class StatusesView(StatusLoginMixin, View):
+class StatusesView(AuthorizationMixin, View):
     def get(self, request):
         statuses = Statuses.objects.all()
         return render(
             request, "statuses/statuses.html", context={"statuses": statuses})
 
 
-class CreateStatusView(StatusLoginMixin, SuccessMessageMixin, CreateView):
+class CreateStatusView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Statuses
     fields = ["name"]
     template_name = "statuses/create.html"
@@ -44,7 +35,7 @@ class CreateStatusView(StatusLoginMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateStatusView(StatusLoginMixin, SuccessMessageMixin, UpdateView):
+class UpdateStatusView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Statuses
     fields = ["name"]
     template_name = "statuses/create.html"
@@ -55,7 +46,7 @@ class UpdateStatusView(StatusLoginMixin, SuccessMessageMixin, UpdateView):
     }
 
 
-class DeleteStatusView(StatusLoginMixin, SuccessMessageMixin, DeleteView):
+class DeleteStatusView(AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = Statuses
     template_name = "statuses/delete.html"
     success_url = reverse_lazy("statuses")
