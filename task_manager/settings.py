@@ -31,6 +31,10 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+]
+
 ALLOWED_HOSTS = [
     "task-manager-project-52.up.railway.app",
     "localhost",
