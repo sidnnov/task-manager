@@ -51,7 +51,7 @@ class TaskCardView(AuthorizationMixin, View):
 class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Tasks
     form_class = TasksCreateForm
-    template_name = "tasks/create.html"
+    template_name = "form.html"
     success_url = reverse_lazy("tasks")
     success_message = _("The task was successfully created")
     extra_context = {
@@ -67,7 +67,7 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Tasks
     form_class = TasksCreateForm
-    template_name = "tasks/create.html"
+    template_name = "form.html"
     success_message = _("Task successfully changed")
     extra_context = {
         "table_name": _("Changing task"),
@@ -77,7 +77,10 @@ class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
 
 class DeleteTaskView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     model = Tasks
-    template_name = "tasks/delete.html"
+    template_name = "delete.html"
     success_url = reverse_lazy("tasks")
     success_message = _("Task successfully deleted")
     permission_denied_message = _("The task can be deleted only by its author")
+    extra_context = {
+        "question": _("Deleting task"),
+    }

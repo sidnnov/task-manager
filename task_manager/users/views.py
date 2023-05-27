@@ -29,7 +29,7 @@ class ProfileUserView(View):
 
 
 class UserCreateView(SuccessMessageMixin, FormView):
-    template_name = "users/create.html"
+    template_name = "form.html"
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     success_message = _("User is successfully registered")
@@ -46,7 +46,7 @@ class UserCreateView(SuccessMessageMixin, FormView):
 class UpdateUserView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
     success_url = reverse_lazy("users")
-    template_name = "users/create.html"
+    template_name = "form.html"
     form_class = CustomUserCreationForm
     success_message = _("User has been successfully changed")
     extra_context = {
@@ -58,8 +58,11 @@ class UpdateUserView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
 class DeleteUserView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     model = CustomUser
     success_url = reverse_lazy("users")
-    template_name = "users/delete_user.html"
+    template_name = "delete.html"
     success_message = _("User has been successfully deleted")
+    extra_context = {
+        "question": _("Deleting a user"),
+    }
 
     def post(self, request, *args, **kwargs):
         try:

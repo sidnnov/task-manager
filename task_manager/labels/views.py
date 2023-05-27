@@ -22,7 +22,7 @@ class LabelsView(AuthorizationMixin, View):
 class CreateLabelView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Labels
     fields = ["name"]
-    template_name = "labels/create.html"
+    template_name = "form.html"
     success_url = reverse_lazy("labels")
     success_message = _("Label successfully created")
     extra_context = {
@@ -34,7 +34,7 @@ class CreateLabelView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 class UpdateLabelView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Labels
     fields = ["name"]
-    template_name = "labels/create.html"
+    template_name = "form.html"
     success_message = _("Label successfully changed")
     extra_context = {
         "table_name": _("Changing label"),
@@ -44,9 +44,12 @@ class UpdateLabelView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
 
 class DeleteLabelView(AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = Labels
-    template_name = "labels/delete.html"
+    template_name = "delete.html"
     success_url = reverse_lazy("labels")
     success_message = _("Label successfully deleted")
+    extra_context = {
+        "question": _("Deleting label"),
+    }
 
     def post(self, request, *args, **kwargs):
         try:

@@ -22,7 +22,7 @@ class StatusesView(AuthorizationMixin, View):
 class CreateStatusView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Statuses
     fields = ["name"]
-    template_name = "statuses/create.html"
+    template_name = "form.html"
     success_url = reverse_lazy("statuses")
     success_message = _("Status successfully created")
     extra_context = {
@@ -34,7 +34,7 @@ class CreateStatusView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 class UpdateStatusView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Statuses
     fields = ["name"]
-    template_name = "statuses/create.html"
+    template_name = "form.html"
     success_message = _("Status successfully changed")
     extra_context = {
         "table_name": _("Changing status"),
@@ -44,9 +44,12 @@ class UpdateStatusView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
 
 class DeleteStatusView(AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = Statuses
-    template_name = "statuses/delete.html"
+    template_name = "delete.html"
     success_url = reverse_lazy("statuses")
     success_message = _("Status successfully deleted")
+    extra_context = {
+        "question": _("Deleting status"),
+    }
 
     def post(self, request, *args, **kwargs):
         try:
