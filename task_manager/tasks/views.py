@@ -4,12 +4,11 @@ from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib import messages
 
 from task_manager.tasks.forms import TasksCreateForm, TasksFilterForm
 from task_manager.tasks.models import Tasks
-from task_manager.utilities import AuthorizationMixin
+from task_manager.utilities import AuthorizationMixin, UserPermissionMixin
 
 
 # Create your views here.
@@ -77,21 +76,21 @@ class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
 
 
 class DeleteTaskView(
-    AuthorizationMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
+    AuthorizationMixin, UserPermissionMixin, SuccessMessageMixin, DeleteView
 ):
     model = Tasks
     template_name = "tasks/delete.html"
     success_url = reverse_lazy("tasks")
     success_message = _("Task successfully deleted")
+    permission_denied_message = _("The task can be deleted only by its author")
 
-    def test_func(self):
-        obj = self.get_object()
-        return obj.author == self.request.user
+    # def test_func(self):
+    #     obj = self.get_object()
+    #     return obj.author == self.request.user
 
-    def handle_no_permission(self):
-        if not self.request.user.is_authenticated:
-            messages.error(self.request, self.not_auth_message)
-            return redirect("login")
-        messages.error(self.request,
-                       _("The task can be deleted only by its author"))
-        return redirect(self.success_url)
+    # def handle_no_permission(self):
+    #     if not self.request.user.is_authenticated:
+    #         messages.error(self.request, self.not_auth_message)
+    #         return redirect("login")
+    #     messages.error(self.request, self.denied_message)
+    #     return redirect(self.success_url)
