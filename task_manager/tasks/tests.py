@@ -22,6 +22,11 @@ class CreateTaskViewTest(TestCase):
             author=self.user
         )
 
+    def test_view_label(self):
+        response = self.client.get(reverse_lazy('tasks'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='tasks/tasks.html')
+
     def test_create_task(self):
         data = {
             "task": "Test Task",

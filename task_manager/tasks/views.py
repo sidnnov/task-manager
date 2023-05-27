@@ -42,6 +42,7 @@ class TasksView(AuthorizationMixin, View):
 
 
 class TaskCardView(AuthorizationMixin, View):
+
     def get(self, request, *args, **kwargs):
         task = Tasks.objects.get(pk=kwargs.get("pk"))
         return render(request, "tasks/card.html", context={"task": task})

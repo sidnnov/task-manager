@@ -15,6 +15,11 @@ class LabelsTestCase(TestCase):
         self.client.force_login(self.user)
         self.label = Labels.objects.create(name="test")
 
+    def test_view_label(self):
+        response = self.client.get(reverse_lazy('labels'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='labels/labels.html')
+
     def test_create_label(self):
         response = self.client.post(
             reverse_lazy("create_label"),

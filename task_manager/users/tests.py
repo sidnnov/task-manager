@@ -16,6 +16,11 @@ class UserTestCase(TestCase):
         self.user = CustomUser.objects.create(
             username="test1", password="test1")
 
+    def test_view_label(self):
+        response = self.client.get(reverse_lazy('users'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='users/users.html')
+
     def test_user_create(self):
         response = self.client.post(
             reverse_lazy("user_create"),
