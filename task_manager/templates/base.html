@@ -20,17 +20,15 @@
     <meta name="description" content="Project for Hexlet.io">
     <title>{% translate "Task manager" %}</title>
     {% bootstrap_css %}
-    {% bootstrap_javascript %}
   </head>
   {% endblock head %}
   {% block body %}
   <body class="min-vh-100 d-flex flex-column">
-    {% include "navbar.html" %}
-
+    <header>
+      {% include 'navbar.html' %}
+    </header>
     <main class="container wrapper flex-grow-1 my-4">
-
       {% bootstrap_messages messages %}
-      
       {% block content %}
       {% endblock %}
     </main>
@@ -39,6 +37,7 @@
         <a target="_blank" href="https://github.com/sidnnov/">by sidnnov</a>
       </div>
     </footer>
+    {% bootstrap_javascript jquery='full' %}
   </body>
   {% endblock body %}
 </html>
