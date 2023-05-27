@@ -4,8 +4,16 @@ PORT ?= 8000
 install:
 	poetry install
 
-uninstall:
-	python3 -m pip uninstall hexlet-code
+migrations:
+	$(LOCAL) makemigrations
+	$(LOCAL) migrate
+
+dev:
+	$(LOCAL) runserver
+
+start:
+	$(LOCAL) migrate
+	poetry run gunicorn --bind 0.0.0.0:$(PORT) task_manager.wsgi
 
 lint:
 	poetry run flake8 task_manager
@@ -22,16 +30,3 @@ messages:
 
 compilemess:
 	poetry run django-admin compilemessages
-
-dev:
-	$(LOCAL) runserver
-
-start:
-	python3 manage.py migrate
-	poetry run gunicorn --bind 0.0.0.0:$(PORT) task_manager.wsgi
-
-migrations:
-	$(LOCAL) makemigrations
-
-migrate:
-	$(LOCAL) migrate
