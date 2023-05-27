@@ -60,9 +60,12 @@ class DeleteUserView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("users")
     template_name = "delete.html"
     success_message = _("User has been successfully deleted")
-    extra_context = {
-        "question": _("Deleting a user"),
-    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["question"] = _("Deleting a user")
+        context["name"] = self.get_object().get_full_name
+        return context
 
     def post(self, request, *args, **kwargs):
         try:

@@ -51,6 +51,12 @@ class DeleteStatusView(AuthorizationMixin, SuccessMessageMixin, DeleteView):
         "question": _("Deleting status"),
     }
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["question"] = _("Deleting status")
+        context["name"] = self.get_object().name
+        return context
+
     def post(self, request, *args, **kwargs):
         try:
             return super().post(request, *args, **kwargs)

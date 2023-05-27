@@ -81,6 +81,9 @@ class DeleteTaskView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("tasks")
     success_message = _("Task successfully deleted")
     permission_denied_message = _("The task can be deleted only by its author")
-    extra_context = {
-        "question": _("Deleting task"),
-    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["question"] = _("Deleting task")
+        context["name"] = self.get_object().task
+        return context

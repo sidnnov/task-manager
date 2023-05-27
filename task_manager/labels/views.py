@@ -47,9 +47,12 @@ class DeleteLabelView(AuthorizationMixin, SuccessMessageMixin, DeleteView):
     template_name = "delete.html"
     success_url = reverse_lazy("labels")
     success_message = _("Label successfully deleted")
-    extra_context = {
-        "question": _("Deleting label"),
-    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["question"] = _("Deleting label")
+        context["name"] = self.get_object().name
+        return context
 
     def post(self, request, *args, **kwargs):
         try:

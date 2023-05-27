@@ -6,9 +6,9 @@
 
 {% block content %}
 
-  <h1 class="display-4 my-5">{% translate 'Deleting label' %}</h1>
-  
-  <p>{% translate 'Are you sure you want to delete' %} {{ object.name }}!?</p>
+  <h1 class="display-4 my-5">{{ question }}</h1>
+
+  <p>{% translate 'Are you sure you want to delete' %} {{ name }}!?</p>
   <form method="post">
     {% csrf_token %}
     <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">
