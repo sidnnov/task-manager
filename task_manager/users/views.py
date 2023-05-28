@@ -16,7 +16,7 @@ from task_manager.utilities import UserPermissionMixin
 class IndexView(View):
 
     def get(self, request):
-        users = CustomUser.objects.order_by('id')
+        users = CustomUser.objects.order_by("id")
         return render(request, "users/users.html", context={"users": users})
 
 

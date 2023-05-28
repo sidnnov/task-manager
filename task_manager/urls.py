@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from task_manager.views import HomePageView, UserLoginView, UserLogoutView
 
+
 urlpatterns = [
     path("", HomePageView.as_view(), name="index"),
     path("admin/", admin.site.urls),
