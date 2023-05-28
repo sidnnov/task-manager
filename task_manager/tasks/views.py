@@ -28,7 +28,7 @@ class TaskCardView(AuthorizationMixin, View):
 
 class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Tasks
-    fields = ["task", "description", "status", "executor", "labels"]
+    fields = ["task", "description", "status", "executor", "label"]
     template_name = "form.html"
     success_url = reverse_lazy("tasks")
     success_message = _("The task was successfully created")
@@ -44,7 +44,7 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 
 class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Tasks
-    fields = ["task", "description", "status", "executor", "labels"]
+    fields = ["task", "description", "status", "executor", "label"]
     template_name = "form.html"
     success_message = _("Task successfully changed")
     extra_context = {
