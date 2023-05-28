@@ -5,40 +5,18 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 
-from task_manager.tasks.forms import TasksCreateForm, TasksFilterForm
+from django_filters.views import FilterView
+from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.models import Tasks
 from task_manager.utilities import AuthorizationMixin, UserPermissionMixin
 
 
 # Create your views here.
-class TasksView(AuthorizationMixin, View):
-    def get(self, request):
-        tasks = Tasks.objects.all()
-        form = TasksFilterForm(request.GET)
-
-        status = request.GET.get("status")
-        executor = request.GET.get("executor")
-        labels = request.GET.get("labels")
-        self_tasks = request.GET.get("self_tasks")
-
-        if status:
-            tasks = tasks.filter(status=status)
-        if executor:
-            tasks = tasks.filter(executor=executor)
-        if labels:
-            tasks = tasks.filter(labels=labels)
-        if self_tasks and self_tasks == "on":
-            tasks = tasks.filter(author=request.user)
-
-        context = {
-            "tasks": tasks,
-            "form": form,
-            "selected_status": status,
-            "selected_executor": executor,
-            "selected_label": labels,
-            "self_tasks": self_tasks,
-        }
-        return render(request, "tasks/tasks.html", context)
+class TasksView(AuthorizationMixin, FilterView):
+    model = Tasks
+    context_object_name = "tasks"
+    template_name = "tasks/tasks.html"
+    filterset_class = TaskFilter
 
 
 class TaskCardView(AuthorizationMixin, View):
@@ -50,7 +28,7 @@ class TaskCardView(AuthorizationMixin, View):
 
 class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Tasks
-    form_class = TasksCreateForm
+    fields = ["task", "description", "status", "executor", "labels"]
     template_name = "form.html"
     success_url = reverse_lazy("tasks")
     success_message = _("The task was successfully created")
@@ -66,7 +44,7 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 
 class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Tasks
-    form_class = TasksCreateForm
+    fields = ["task", "description", "status", "executor", "labels"]
     template_name = "form.html"
     success_message = _("Task successfully changed")
     extra_context = {

@@ -22,6 +22,7 @@ This is a task management application. It helps you organize workflows and distr
 - psycopg2-binary = "^2.9.6"
 - django-bootstrap4 = "^23.1"
 - django-extensions = "^3.2.1"
+- django-filter = "^23.2"
 
 
 #### Installation:
