@@ -35,8 +35,10 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
 ]
 
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+
 ROLLBAR = {
-    'access_token': 'ed78daaa06744a91b5e081ce90f05cb5',
+    'access_token': ACCESS_TOKEN,
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
@@ -172,3 +174,22 @@ AUTH_USER_MODEL = "users.CustomUser"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = reverse_lazy("index")
 LOGOUT_REDIRECT_URL = reverse_lazy("index")
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'rollbar': {
+#             'access_token': ACCESS_TOKEN,
+#             'class': 'rollbar.logger.RollbarHandler',
+#             'level': 'ERROR',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['rollbar'],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#     },
+# }
