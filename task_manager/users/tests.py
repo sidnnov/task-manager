@@ -1,8 +1,13 @@
 from django.urls import reverse, reverse_lazy
-from django.test import TestCase, Client
+from django.test import TestCase, Client, modify_settings
 from .models import CustomUser
 
 
+@modify_settings(
+    MIDDLEWARE={'remove': [
+        'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    ]}
+)
 class UserTestCase(TestCase):
     def setUp(self):
         self.client = Client()
