@@ -17,7 +17,7 @@ class TaskFilter(FilterSet):
         label=_("Executor"),
         queryset=CustomUser.objects.all(),
     )
-    labels = ModelChoiceFilter(
+    label = ModelChoiceFilter(
         label=_("Label"),
         queryset=Labels.objects.all(),
     )
@@ -35,4 +35,4 @@ class TaskFilter(FilterSet):
 
     class Meta:
         model = Tasks
-        fields = ["status", "executor", "labels"]
+        fields = ["status", "executor", "label"]
