@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
@@ -6,7 +6,6 @@ from django.views.generic.edit import FormView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from django.db.models import ProtectedError
-
 
 from task_manager.users.forms import CustomUserCreationForm
 from task_manager.users.models import CustomUser
@@ -24,7 +23,7 @@ class IndexView(View):
 class ProfileUserView(View):
 
     def get(self, request, *args, **kwargs):
-        user = CustomUser.objects.get(pk=kwargs.get("pk"))
+        user = get_object_or_404(CustomUser, pk=kwargs.get("pk"))
         return render(request, "users/profile.html", context={"user": user})
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -22,7 +22,7 @@ class TasksView(AuthorizationMixin, FilterView):
 class TaskCardView(AuthorizationMixin, View):
 
     def get(self, request, *args, **kwargs):
-        task = Tasks.objects.get(pk=kwargs.get("pk"))
+        task = get_object_or_404(Tasks, pk=kwargs.get("pk"))
         return render(request, "tasks/card.html", context={"task": task})
 
 
