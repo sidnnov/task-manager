@@ -35,6 +35,13 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
 ]
 
+ROLLBAR = {
+    'access_token': 'ed78daaa06744a91b5e081ce90f05cb5',
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
+
 ALLOWED_HOSTS = [
     "task-manager-project-52.up.railway.app",
     "localhost",
@@ -65,12 +72,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    'django.middleware.locale.LocaleMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]
 
 ROOT_URLCONF = "task_manager.urls"

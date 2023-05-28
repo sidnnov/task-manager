@@ -23,6 +23,7 @@ This is a task management application. It helps you organize workflows and distr
 - django-bootstrap4 = "^23.1"
 - django-extensions = "^3.2.1"
 - django-filter = "^23.2"
+- rollbar = "^0.16.3"
 
 
 #### Installation:
