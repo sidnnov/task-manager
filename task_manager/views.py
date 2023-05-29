@@ -22,8 +22,8 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     success_url = reverse_lazy("tasks")
     success_message = _("You are logged in")
     extra_context = {
-        "table_name": _("Login"),
-        "button_name": _("Log in"),
+        "table_name": _("Sing in"),
+        "button_name": _("Enter"),
     }
 
 

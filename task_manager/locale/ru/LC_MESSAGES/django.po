@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 16:00+0100\n"
+"POT-Creation-Date: 2023-05-29 16:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,12 +236,14 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: task_manager/templates/navbar.html:33
-msgid "Logout"
+msgid "Sign out"
 msgstr "Выход"
 
-#: task_manager/templates/navbar.html:40 task_manager/views.py:25
-msgid "Login"
-msgstr "Вход"
+#: task_manager/templates/navbar.html:40
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign in"
+msgstr "Регистрация"
 
 #: task_manager/templates/navbar.html:43 task_manager/users/views.py:37
 msgid "Sign up"
@@ -316,13 +318,24 @@ msgstr "У вас нет прав для изменения другого по�
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
+#: task_manager/views.py:25
+#, fuzzy
+#| msgid "Sing out"
+msgid "Sing in"
+msgstr "Выход"
+
 #: task_manager/views.py:26
-msgid "Log in"
-msgstr "Вход"
+msgid "Enter"
+msgstr "Войти"
 
 #: task_manager/views.py:33
 msgid "You are unlogged"
 msgstr "Вы разлогинены"
+
+#, fuzzy
+#~| msgid "Sing in"
+#~ msgid "Log in"
+#~ msgstr "Вход"
 
 #~ msgid "Password"
 #~ msgstr "Пароль"
