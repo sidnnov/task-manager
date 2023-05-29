@@ -129,7 +129,7 @@ msgstr "Исполнитель"
 
 #: task_manager/tasks/views.py:34
 msgid "The task was successfully created"
-msgstr "Задание было успешно создано"
+msgstr "Задача успешно создана"
 
 #: task_manager/tasks/views.py:36 task_manager/templates/tasks/tasks.html:9
 msgid "Create task"
