@@ -17,6 +17,7 @@ class TasksView(AuthorizationMixin, FilterView):
     context_object_name = "tasks"
     template_name = "tasks/tasks.html"
     filterset_class = TaskFilter
+    ordering = ['id']
 
 
 class TaskCardView(AuthorizationMixin, View):
@@ -28,7 +29,7 @@ class TaskCardView(AuthorizationMixin, View):
 
 class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Tasks
-    fields = ["task", "description", "status", "executor", "label"]
+    fields = ["task", "description", "status", "executor", "labels"]
     template_name = "form.html"
     success_url = reverse_lazy("tasks")
     success_message = _("The task was successfully created")
@@ -37,11 +38,6 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
         "button_name": _("Create"),
     }
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields["label"].label = _("Labels")
-        return form
-
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
@@ -49,18 +45,13 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 
 class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Tasks
-    fields = ["task", "description", "status", "executor", "label"]
+    fields = ["task", "description", "status", "executor", "labels"]
     template_name = "form.html"
     success_message = _("Task successfully changed")
     extra_context = {
         "table_name": _("Changing task"),
         "button_name": _("Change"),
     }
-
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields["label"].label = _("Labels")
-        return form
 
 
 class DeleteTaskView(UserPermissionMixin, SuccessMessageMixin, DeleteView):

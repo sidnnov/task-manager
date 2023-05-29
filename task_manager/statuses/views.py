@@ -14,7 +14,7 @@ from task_manager.utilities import AuthorizationMixin
 # Create your views here.
 class StatusesView(AuthorizationMixin, View):
     def get(self, request):
-        statuses = Statuses.objects.all()
+        statuses = Statuses.objects.order_by("id")
         return render(
             request, "statuses/statuses.html", context={"statuses": statuses})
 

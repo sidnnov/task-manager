@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 17:45+0100\n"
+"POT-Creation-Date: 2023-05-29 23:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgid "Create label"
 msgstr "Создать метку"
 
 #: task_manager/labels/views.py:30 task_manager/statuses/views.py:30
-#: task_manager/tasks/views.py:37
+#: task_manager/tasks/views.py:38
 msgid "Create"
 msgstr "Создать"
 
@@ -50,7 +50,7 @@ msgid "Changing label"
 msgstr "Изменение метки"
 
 #: task_manager/labels/views.py:41 task_manager/statuses/views.py:41
-#: task_manager/tasks/views.py:57 task_manager/templates/labels/labels.html:23
+#: task_manager/tasks/views.py:53 task_manager/templates/labels/labels.html:23
 #: task_manager/templates/statuses/statuses.html:23
 #: task_manager/templates/tasks/card.html:48
 #: task_manager/templates/tasks/tasks.html:53
@@ -111,7 +111,7 @@ msgstr "Статус"
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/tasks/filters.py:21 task_manager/tasks/models.py:31
+#: task_manager/tasks/filters.py:21 task_manager/templates/tasks/card.html:38
 msgid "Label"
 msgstr "Метка"
 
@@ -127,36 +127,36 @@ msgstr "Описание"
 msgid "Performer"
 msgstr "Исполнитель"
 
-#: task_manager/tasks/views.py:34
-msgid "The task was successfully created"
-msgstr "Задача успешно создана"
-
-#: task_manager/tasks/views.py:36 task_manager/templates/tasks/tasks.html:9
-msgid "Create task"
-msgstr "Создать задачу"
-
-#: task_manager/tasks/views.py:42 task_manager/templates/labels/labels.html:5
+#: task_manager/tasks/models.py:31 task_manager/templates/labels/labels.html:5
 #: task_manager/templates/navbar.html:22
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/tasks/views.py:54
+#: task_manager/tasks/views.py:35
+msgid "The task was successfully created"
+msgstr "Задача успешно создана"
+
+#: task_manager/tasks/views.py:37 task_manager/templates/tasks/tasks.html:9
+msgid "Create task"
+msgstr "Создать задачу"
+
+#: task_manager/tasks/views.py:50
 msgid "Task successfully changed"
 msgstr "Задача успешно изменена"
 
-#: task_manager/tasks/views.py:56
+#: task_manager/tasks/views.py:52
 msgid "Changing task"
 msgstr "Изменение задачи"
 
-#: task_manager/tasks/views.py:65
+#: task_manager/tasks/views.py:61
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
-#: task_manager/tasks/views.py:66
+#: task_manager/tasks/views.py:62
 msgid "The task can be deleted only by its author"
 msgstr "Задачу может удалить только её автор"
 
-#: task_manager/tasks/views.py:70
+#: task_manager/tasks/views.py:66
 msgid "Deleting task"
 msgstr "Удаление задачи"
 
