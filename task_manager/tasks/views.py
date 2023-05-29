@@ -37,6 +37,11 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
         "button_name": _("Create"),
     }
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["label"].label = _("Labels")
+        return form
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
