@@ -57,6 +57,11 @@ class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
         "button_name": _("Change"),
     }
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["label"].label = _("Labels")
+        return form
+
 
 class DeleteTaskView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     model = Tasks
