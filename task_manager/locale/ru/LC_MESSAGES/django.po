@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-28 17:46+0100\n"
+"POT-Creation-Date: 2023-05-29 16:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "Изменение метки"
 #: task_manager/templates/tasks/card.html:48
 #: task_manager/templates/tasks/tasks.html:53
 #: task_manager/templates/users/profile.html:33
-#: task_manager/templates/users/users.html:26 task_manager/users/views.py:53
+#: task_manager/templates/users/users.html:26 task_manager/users/views.py:50
 msgid "Change"
 msgstr "Изменить"
 
@@ -191,9 +191,11 @@ msgstr ""
 "Вы находитесь на странице учебного проекта - менеджера задач. Вы можете "
 "зарегистрироваться и попробовать создать свою собственную задачу."
 
-#: task_manager/templates/index.html:13 task_manager/templates/navbar.html:43
+#: task_manager/templates/index.html:13
+#, fuzzy
+#| msgid "Description"
 msgid "Registration"
-msgstr "Регистрация"
+msgstr "Описание"
 
 #: task_manager/templates/labels/labels.html:5
 #: task_manager/templates/navbar.html:22
@@ -218,23 +220,6 @@ msgstr "Дата создания"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/templates/login.html:12
-msgid "Login"
-msgstr "Вход"
-
-#: task_manager/templates/login.html:27
-#: task_manager/templates/users/users.html:10
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: task_manager/templates/login.html:31
-msgid "Password"
-msgstr "Пароль"
-
-#: task_manager/templates/login.html:34
-msgid "Sign in"
-msgstr "Войти"
-
 #: task_manager/templates/navbar.html:15
 #: task_manager/templates/users/users.html:5
 msgid "Users"
@@ -254,9 +239,13 @@ msgstr "Задачи"
 msgid "Logout"
 msgstr "Выход"
 
-#: task_manager/templates/navbar.html:40
-msgid "Log in"
+#: task_manager/templates/navbar.html:40 task_manager/views.py:25
+msgid "Login"
 msgstr "Вход"
+
+#: task_manager/templates/navbar.html:43 task_manager/users/views.py:37
+msgid "Sign up"
+msgstr "Регистрация"
 
 #: task_manager/templates/tasks/card.html:11
 msgid "Task view"
@@ -279,39 +268,39 @@ msgstr "Профиль"
 msgid "Last name"
 msgstr "Фамилия"
 
+#: task_manager/templates/users/users.html:10
+msgid "Username"
+msgstr "Имя пользователя"
+
 #: task_manager/templates/users/users.html:11
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/users/views.py:34
+#: task_manager/users/views.py:35
 msgid "User is successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:36
-msgid "Sign up"
-msgstr "Регистрация"
-
-#: task_manager/users/views.py:37
+#: task_manager/users/views.py:38
 msgid "Submit"
 msgstr "Зарегистрировать"
 
-#: task_manager/users/views.py:50
+#: task_manager/users/views.py:47
 msgid "User has been successfully changed"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:52
+#: task_manager/users/views.py:49
 msgid "Changing user"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/views.py:61
+#: task_manager/users/views.py:58
 msgid "User has been successfully deleted"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:65
+#: task_manager/users/views.py:62
 msgid "Deleting a user"
 msgstr "Удаление пользователя"
 
-#: task_manager/users/views.py:74
+#: task_manager/users/views.py:71
 msgid "Unable to delete a user because he is being used"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
@@ -323,13 +312,20 @@ msgstr "Вы не авторизованы! Пожалуйста, выполни
 msgid "You have no rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: task_manager/views.py:17
+#: task_manager/views.py:23
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:23
+#: task_manager/views.py:26
+msgid "Log in"
+msgstr "Вход"
+
+#: task_manager/views.py:33
 msgid "You are unlogged"
 msgstr "Вы разлогинены"
+
+#~ msgid "Password"
+#~ msgstr "Пароль"
 
 #~ msgid "All"
 #~ msgstr "Все"

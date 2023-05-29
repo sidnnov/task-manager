@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic.edit import FormView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from django.db.models import ProtectedError
@@ -27,7 +27,8 @@ class ProfileUserView(View):
         return render(request, "users/profile.html", context={"user": user})
 
 
-class UserCreateView(SuccessMessageMixin, FormView):
+class UserCreateView(SuccessMessageMixin, CreateView):
+    model = CustomUser
     template_name = "form.html"
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
@@ -36,10 +37,6 @@ class UserCreateView(SuccessMessageMixin, FormView):
         "table_name": _("Sign up"),
         "button_name": _("Submit"),
     }
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
 
 
 class UpdateUserView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
