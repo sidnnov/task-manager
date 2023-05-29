@@ -30,17 +30,17 @@
             <a class="nav-link" href="{% url 'user_profile' request.user.id %}">{{request.user | title}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">{% translate "Logout" %}</a>
+            <a class="nav-link" href="{% url 'logout' %}">{% translate "Sign out" %}</a>
           </li>
         </ul>
         {% else %}
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">{% translate "Log in" %}</a>
+              <a class="nav-link" href="{% url 'login' %}">{% translate "Sign in" %}</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'user_create' %}">{% translate "Registration" %}</a>
+              <a class="nav-link" href="{% url 'user_create' %}">{% translate "Sign up" %}</a>
           </li>
         </ul>
         {% endif %}
