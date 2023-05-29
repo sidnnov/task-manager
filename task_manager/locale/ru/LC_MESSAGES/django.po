@@ -240,10 +240,8 @@ msgid "Sign out"
 msgstr "Выход"
 
 #: task_manager/templates/navbar.html:40
-#, fuzzy
-#| msgid "Sign up"
 msgid "Sign in"
-msgstr "Регистрация"
+msgstr "Вход"
 
 #: task_manager/templates/navbar.html:43 task_manager/users/views.py:37
 msgid "Sign up"
@@ -319,10 +317,8 @@ msgid "You are logged in"
 msgstr "Вы залогинены"
 
 #: task_manager/views.py:25
-#, fuzzy
-#| msgid "Sing out"
 msgid "Sing in"
-msgstr "Выход"
+msgstr "Вход"
 
 #: task_manager/views.py:26
 msgid "Enter"
