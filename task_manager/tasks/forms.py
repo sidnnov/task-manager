@@ -7,9 +7,12 @@ from task_manager.users.models import CustomUser
 
 
 class TasksForm(forms.ModelForm):
-    status = forms.ModelChoiceField(queryset=Statuses.objects.order_by('-id'))
-    executor = forms.ModelChoiceField(queryset=CustomUser.objects.order_by('-id'))
-    labels = forms.ModelMultipleChoiceField(queryset=Labels.objects.order_by('-id'))
+    status = forms.ModelChoiceField(
+        queryset=Statuses.objects.order_by("id"))
+    executor = forms.ModelChoiceField(
+        queryset=CustomUser.objects.order_by("id"))
+    labels = forms.ModelMultipleChoiceField(
+        queryset=Labels.objects.order_by("id"))
 
     class Meta:
         model = Tasks
