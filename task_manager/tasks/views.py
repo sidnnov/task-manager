@@ -6,8 +6,11 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 
 from django_filters.views import FilterView
+from task_manager.labels.models import Labels
+from task_manager.statuses.models import Statuses
 from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.models import Tasks
+from task_manager.users.models import CustomUser
 from task_manager.utilities import AuthorizationMixin, UserPermissionMixin
 
 
@@ -17,6 +20,7 @@ class TasksView(AuthorizationMixin, FilterView):
     context_object_name = "tasks"
     template_name = "tasks/tasks.html"
     filterset_class = TaskFilter
+    ordering = ['id']
 
 
 class TaskCardView(AuthorizationMixin, View):
@@ -28,7 +32,7 @@ class TaskCardView(AuthorizationMixin, View):
 
 class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Tasks
-    fields = ["task", "description", "status", "executor", "label"]
+    fields = ["name", "description", "status", "executor", "labels"]
     template_name = "form.html"
     success_url = reverse_lazy("tasks")
     success_message = _("The task was successfully created")
@@ -39,7 +43,9 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
-        form.fields["label"].label = _("Labels")
+        form.fields["status"].queryset = Statuses.objects.order_by('id')
+        form.fields["executor"].queryset = CustomUser.objects.order_by("id")
+        form.fields["labels"].queryset = Labels.objects.order_by('id')
         return form
 
     def form_valid(self, form):
@@ -49,7 +55,7 @@ class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
 
 class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = Tasks
-    fields = ["task", "description", "status", "executor", "label"]
+    fields = ["name", "description", "status", "executor", "labels"]
     template_name = "form.html"
     success_message = _("Task successfully changed")
     extra_context = {
@@ -59,7 +65,9 @@ class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
-        form.fields["label"].label = _("Labels")
+        form.fields["status"].queryset = Statuses.objects.order_by('id')
+        form.fields["executor"].queryset = CustomUser.objects.order_by("id")
+        form.fields["labels"].queryset = Labels.objects.order_by('id')
         return form
 
 
@@ -73,5 +81,5 @@ class DeleteTaskView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["question"] = _("Deleting task")
-        context["name"] = self.get_object().task
+        context["name"] = self.get_object().name
         return context

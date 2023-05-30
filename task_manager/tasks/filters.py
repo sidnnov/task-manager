@@ -11,15 +11,15 @@ from task_manager.users.models import CustomUser
 class TaskFilter(FilterSet):
     status = ModelChoiceFilter(
         label=_("Status"),
-        queryset=Statuses.objects.all(),
+        queryset=Statuses.objects.order_by("id"),
     )
     executor = ModelChoiceFilter(
         label=_("Executor"),
-        queryset=CustomUser.objects.all(),
+        queryset=CustomUser.objects.order_by("id"),
     )
-    label = ModelChoiceFilter(
+    labels = ModelChoiceFilter(
         label=_("Label"),
-        queryset=Labels.objects.all(),
+        queryset=Labels.objects.order_by("id"),
     )
     self_tasks = BooleanFilter(
         label=_("Only your tasks"),
@@ -35,4 +35,4 @@ class TaskFilter(FilterSet):
 
     class Meta:
         model = Tasks
-        fields = ["status", "executor", "label"]
+        fields = ["status", "executor", "labels"]

@@ -14,7 +14,7 @@ from task_manager.utilities import AuthorizationMixin
 # Create your views here.
 class LabelsView(AuthorizationMixin, View):
     def get(self, request):
-        labels = Labels.objects.all()
+        labels = Labels.objects.order_by("id")
         return render(
             request, "labels/labels.html", context={"labels": labels})
 
