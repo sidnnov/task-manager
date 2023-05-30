@@ -1,15 +1,15 @@
-from django.test import Client, TestCase, modify_settings
+from django.test import Client, TestCase
 from django.urls import reverse, reverse_lazy
 from task_manager.statuses.models import Statuses
 from task_manager.tasks.models import Tasks
 from task_manager.users.models import CustomUser
 
 
-@modify_settings(
-    MIDDLEWARE={'remove': [
-        'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
-    ]}
-)
+# @modify_settings(
+#     MIDDLEWARE={'remove': [
+#         'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+#     ]}
+# )
 class CreateTaskViewTest(TestCase):
     def setUp(self):
         self.client = Client()
