@@ -20,7 +20,7 @@ class CreateTaskViewTest(TestCase):
         self.client.force_login(self.user)
         self.status = Statuses.objects.create(name="test")
         self.task = Tasks.objects.create(
-            task='test1',
+            name='test1',
             status=self.status,
             executor=self.user,
             author=self.user
@@ -33,7 +33,7 @@ class CreateTaskViewTest(TestCase):
 
     def test_create_task(self):
         data = {
-            "task": "Test Task",
+            "name": "Test Task",
             "description": "Test Description",
             "status": self.status.id,
             "executor": self.user.id,
@@ -41,8 +41,8 @@ class CreateTaskViewTest(TestCase):
         response = self.client.post(reverse_lazy("create_task"), data)
 
         self.assertEqual(response.status_code, 302)
-        task = Tasks.objects.get(task=data["task"])
-        self.assertEqual(task.task, "Test Task")
+        task = Tasks.objects.get(name=data["name"])
+        self.assertEqual(task.name, "Test Task")
         self.assertEqual(task.description, "Test Description")
         self.assertEqual(task.author, self.user)
         self.assertEqual(task.status.id, self.status.id)
@@ -56,7 +56,7 @@ class CreateTaskViewTest(TestCase):
         )
         url = reverse("update_task", kwargs={"pk": self.task.pk})
         data = {
-            "task": "Update Task",
+            "name": "Update Task",
             "description": "Update Description",
             "status": status2.id,
             "executor": user2.id,
@@ -64,7 +64,7 @@ class CreateTaskViewTest(TestCase):
         response = self.client.post(url, data)
         update_task = Tasks.objects.get(pk=self.task.pk)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(update_task.task, data["task"])
+        self.assertEqual(update_task.name, data["name"])
         self.assertRedirects(response, reverse_lazy("tasks"))
 
     def test_task_delete(self):

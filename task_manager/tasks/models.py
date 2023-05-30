@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Tasks(models.Model):
-    task = models.CharField(
+    name = models.CharField(
         max_length=255,
         unique=True,
         verbose_name=_("Name"),
@@ -24,8 +24,8 @@ class Tasks(models.Model):
         CustomUser,
         on_delete=models.PROTECT,
         null=True,
-        related_name="performed_tasks",
-        verbose_name=_("Performer"),
+        related_name="executor",
+        verbose_name=_("Executor"),
     )
     labels = models.ManyToManyField(
         Labels, through="LabelForTask", verbose_name=_("Labels"), blank=True
