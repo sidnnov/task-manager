@@ -43,7 +43,7 @@
             <tr>
               <th scope="row" style="width: 2%;">{{ task.id }}</th>
                 <td class="text-break" style="width: 25%;">
-                  <a href="{% url 'card_task' task.id %}">{{ task.task }}</a>
+                  <a href="{% url 'card_task' task.id %}">{{ task.name }}</a>
                 </td>
                 <td class="text-break" style="width: 20%;">{{ task.status.name }}</td>
                 <td class="text-break" style="width: 15%;">{{ task.author }}</td>
