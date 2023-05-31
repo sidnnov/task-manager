@@ -7,8 +7,16 @@
     <h1 class="my-4"></h1>
     <div class="card">
       <div class="card-body p-5 bg-light">
-        <div class="display-4">{% translate "Hello" %}!</div>
-        <p class="lead">{% translate "You're on the study proct page - the task manager. You can register and try to create your own task." %}</p>
+        
+        {% if request.user.is_authenticated %}
+          <h4>{% translate "Hello" %}, {{request.user | title}}!</h6>
+          <hr>
+          <p>{% translate "Welcome to the web-based task manager application! Manage your tasks more easily and efficiently. Create statuses and labels to easily categorize and track your tasks. Assign performers and assign statuses and labels to each task so you always know your progress." %}</p>
+          <p>{% translate "The app provides a user-friendly interface for creating, viewing and updating statuses, labels and tasks. Stay organized and find the information you need easily. Your team will be able to collaborate and achieve their goals." %}</p>
+        {% else %}
+          <div class="display-4">{% translate "Hello" %}!</div>
+          <p class="lead">{% translate "You're on the study proct page - the task manager. You can register and try to create your own task." %}</p>
+        {% endif %}
         <hr>
       </div>
     </div>
