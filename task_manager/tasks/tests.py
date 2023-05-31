@@ -1,15 +1,15 @@
-from django.test import Client, TestCase
+from django.test import Client, TestCase, modify_settings
 from django.urls import reverse, reverse_lazy
 from task_manager.statuses.models import Statuses
 from task_manager.tasks.models import Tasks
 from task_manager.users.models import CustomUser
 
 
-# @modify_settings(
-#     MIDDLEWARE={'remove': [
-#         'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
-#     ]}
-# )
+@modify_settings(
+    MIDDLEWARE={"remove": [
+        "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
+    ]}
+)
 class CreateTaskViewTest(TestCase):
     def setUp(self):
         self.client = Client()
@@ -20,16 +20,16 @@ class CreateTaskViewTest(TestCase):
         self.client.force_login(self.user)
         self.status = Statuses.objects.create(name="test")
         self.task = Tasks.objects.create(
-            name='test1',
+            name="test1",
             status=self.status,
             executor=self.user,
             author=self.user
         )
 
     def test_view_label(self):
-        response = self.client.get(reverse_lazy('tasks'))
+        response = self.client.get(reverse_lazy("tasks"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='tasks/tasks.html')
+        self.assertTemplateUsed(response, template_name="tasks/tasks.html")
 
     def test_create_task(self):
         data = {

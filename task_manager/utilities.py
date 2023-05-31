@@ -25,7 +25,7 @@ class UserPermissionMixin(UserPassesTestMixin):
 
     def test_func(self):
         obj = self.get_object()
-        if hasattr(obj, 'author'):
+        if hasattr(obj, "author"):
             return obj.author == self.request.user
         return obj.pk == self.request.user.pk
 

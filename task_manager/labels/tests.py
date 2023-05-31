@@ -5,8 +5,8 @@ from .models import Labels
 
 
 @modify_settings(
-    MIDDLEWARE={'remove': [
-        'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    MIDDLEWARE={"remove": [
+        "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
     ]}
 )
 class LabelsTestCase(TestCase):
@@ -21,9 +21,9 @@ class LabelsTestCase(TestCase):
         self.label = Labels.objects.create(name="test")
 
     def test_view_label(self):
-        response = self.client.get(reverse_lazy('labels'))
+        response = self.client.get(reverse_lazy("labels"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='labels/labels.html')
+        self.assertTemplateUsed(response, template_name="labels/labels.html")
 
     def test_create_label(self):
         response = self.client.post(

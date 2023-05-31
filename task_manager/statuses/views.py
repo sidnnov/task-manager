@@ -11,7 +11,6 @@ from task_manager.statuses.models import Statuses
 from task_manager.utilities import AuthorizationMixin
 
 
-# Create your views here.
 class StatusesView(AuthorizationMixin, View):
     def get(self, request):
         statuses = Statuses.objects.order_by("id")
@@ -23,7 +22,6 @@ class CreateStatusView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Statuses
     fields = ["name"]
     template_name = "form.html"
-    success_url = reverse_lazy("statuses")
     success_message = _("Status successfully created")
     extra_context = {
         "table_name": _("Create status"),

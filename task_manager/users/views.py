@@ -12,7 +12,6 @@ from task_manager.users.models import CustomUser
 from task_manager.utilities import UserPermissionMixin
 
 
-# Create your views here.
 class IndexView(View):
 
     def get(self, request):
