@@ -3,6 +3,7 @@ name = "hexlet-code"
 version = "0.1.0"
 description = "Task manager"
 authors = ["sidnnov <sidnnov@gmail.com>"]
+packages = [{include = "task_manager"}]
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python",
