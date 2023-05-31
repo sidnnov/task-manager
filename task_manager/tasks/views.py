@@ -14,61 +14,55 @@ from task_manager.users.models import CustomUser
 from task_manager.utilities import AuthorizationMixin, UserPermissionMixin
 
 
-# Create your views here.
 class TasksView(AuthorizationMixin, FilterView):
     model = Tasks
     context_object_name = "tasks"
     template_name = "tasks/tasks.html"
     filterset_class = TaskFilter
-    ordering = ['id']
+    ordering = ["id"]
 
 
 class TaskCardView(AuthorizationMixin, View):
-
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Tasks, pk=kwargs.get("pk"))
         return render(request, "tasks/card.html", context={"task": task})
 
 
-class CreateTaskView(AuthorizationMixin, SuccessMessageMixin, CreateView):
+class TaskFormMixin:
     model = Tasks
     fields = ["name", "description", "status", "executor", "labels"]
     template_name = "form.html"
-    success_url = reverse_lazy("tasks")
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["status"].queryset = Statuses.objects.order_by("id")
+        form.fields["executor"].queryset = CustomUser.objects.order_by("id")
+        form.fields["labels"].queryset = Labels.objects.order_by("id")
+        return form
+
+
+class CreateTaskView(
+    AuthorizationMixin, SuccessMessageMixin, TaskFormMixin, CreateView
+):
     success_message = _("The task was successfully created")
     extra_context = {
         "table_name": _("Create task"),
         "button_name": _("Create"),
     }
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields["status"].queryset = Statuses.objects.order_by('id')
-        form.fields["executor"].queryset = CustomUser.objects.order_by("id")
-        form.fields["labels"].queryset = Labels.objects.order_by('id')
-        return form
-
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class UpdateTaskView(AuthorizationMixin, SuccessMessageMixin, UpdateView):
-    model = Tasks
-    fields = ["name", "description", "status", "executor", "labels"]
-    template_name = "form.html"
+class UpdateTaskView(
+    AuthorizationMixin, SuccessMessageMixin, TaskFormMixin, UpdateView
+):
     success_message = _("Task successfully changed")
     extra_context = {
         "table_name": _("Changing task"),
         "button_name": _("Change"),
     }
-
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields["status"].queryset = Statuses.objects.order_by('id')
-        form.fields["executor"].queryset = CustomUser.objects.order_by("id")
-        form.fields["labels"].queryset = Labels.objects.order_by('id')
-        return form
 
 
 class DeleteTaskView(UserPermissionMixin, SuccessMessageMixin, DeleteView):

@@ -11,7 +11,6 @@ from task_manager.labels.models import Labels
 from task_manager.utilities import AuthorizationMixin
 
 
-# Create your views here.
 class LabelsView(AuthorizationMixin, View):
     def get(self, request):
         labels = Labels.objects.order_by("id")
@@ -23,7 +22,6 @@ class CreateLabelView(AuthorizationMixin, SuccessMessageMixin, CreateView):
     model = Labels
     fields = ["name"]
     template_name = "form.html"
-    success_url = reverse_lazy("labels")
     success_message = _("Label successfully created")
     extra_context = {
         "table_name": _("Create label"),
