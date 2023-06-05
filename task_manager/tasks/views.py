@@ -37,6 +37,7 @@ class TaskFormMixin:
         form = super().get_form(form_class)
         form.fields["status"].queryset = Statuses.objects.order_by("id")
         form.fields["executor"].queryset = CustomUser.objects.order_by("id")
+        form.fields["executor"].required = False
         form.fields["labels"].queryset = Labels.objects.order_by("id")
         return form
 
