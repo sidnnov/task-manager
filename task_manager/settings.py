@@ -32,14 +32,14 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv('DEBUG', False) == 'True'
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.railway.app",
+    "https://*.onrender.com",
 ]
 
 ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 
 
 ALLOWED_HOSTS = [
-    "task-manager-project-52.up.railway.app",
+    "task-manager-5gns.onrender.com",
     "localhost",
     "127.0.0.1",
     "webserver",
