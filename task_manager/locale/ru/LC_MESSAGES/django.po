@@ -206,7 +206,7 @@ msgid ""
 "You're on the study proct page - the task manager. You can register and try "
 "to create your own task."
 msgstr ""
-"Вы находитесь на странице учебного проекта - менеджера задач. Вы можете "
+"Вы находитесь на странице учебного проекта - менеджера задач. Ви можете "
 "зарегистрироваться и попробовать создать свою собственную задачу."
 
 #: task_manager/templates/labels/labels.html:12
