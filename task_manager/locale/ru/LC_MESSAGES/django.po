@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-31 10:58+0100\n"
+"POT-Creation-Date: 2024-11-07 18:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgid "Create label"
 msgstr "Создать метку"
 
 #: task_manager/labels/views.py:28 task_manager/statuses/views.py:28
-#: task_manager/tasks/views.py:50
+#: task_manager/tasks/views.py:51
 msgid "Create"
 msgstr "Создать"
 
@@ -50,7 +50,7 @@ msgid "Changing label"
 msgstr "Изменение метки"
 
 #: task_manager/labels/views.py:39 task_manager/statuses/views.py:39
-#: task_manager/tasks/views.py:64 task_manager/templates/labels/labels.html:23
+#: task_manager/tasks/views.py:65 task_manager/templates/labels/labels.html:23
 #: task_manager/templates/statuses/statuses.html:23
 #: task_manager/templates/tasks/card.html:48
 #: task_manager/templates/tasks/tasks.html:53
@@ -129,31 +129,31 @@ msgstr "Описание"
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/tasks/views.py:47
+#: task_manager/tasks/views.py:48
 msgid "The task was successfully created"
 msgstr "Задача успешно создана"
 
-#: task_manager/tasks/views.py:49 task_manager/templates/tasks/tasks.html:9
+#: task_manager/tasks/views.py:50 task_manager/templates/tasks/tasks.html:9
 msgid "Create task"
 msgstr "Создать задачу"
 
-#: task_manager/tasks/views.py:61
+#: task_manager/tasks/views.py:62
 msgid "Task successfully changed"
 msgstr "Задача успешно изменена"
 
-#: task_manager/tasks/views.py:63
+#: task_manager/tasks/views.py:64
 msgid "Changing task"
 msgstr "Изменение задачи"
 
-#: task_manager/tasks/views.py:72
+#: task_manager/tasks/views.py:73
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
-#: task_manager/tasks/views.py:73
+#: task_manager/tasks/views.py:74
 msgid "The task can be deleted only by its author"
 msgstr "Задачу может удалить только её автор"
 
-#: task_manager/tasks/views.py:77
+#: task_manager/tasks/views.py:78
 msgid "Deleting task"
 msgstr "Удаление задачи"
 
@@ -191,7 +191,11 @@ msgid ""
 "easily and efficiently. Create statuses and labels to easily categorize and "
 "track your tasks. Assign performers and assign statuses and labels to each "
 "task so you always know your progress."
-msgstr "Добро пожаловать в веб-приложение менеджера задач! Управляйте своими задачами проще и эффективнее. Создавайте статусы и метки, чтобы легко классифицировать и отслеживать задачи. Назначайте исполнителей и ставьте статусы и метки для каждой задачи, чтобы всегда быть в курсе прогресса."
+msgstr ""
+"Добро пожаловать в веб-приложение менеджера задач! Управляйте своими "
+"задачами проще и эффективнее. Создавайте статусы и метки, чтобы легко "
+"классифицировать и отслеживать задачи. Назначайте исполнителей и ставьте "
+"статусы и метки для каждой задачи, чтобы всегда быть в курсе прогресса."
 
 #: task_manager/templates/index.html:15
 msgid ""
@@ -199,7 +203,11 @@ msgid ""
 "updating statuses, labels and tasks. Stay organized and find the information "
 "you need easily. Your team will be able to collaborate and achieve their "
 "goals."
-msgstr "Приложение обеспечивает удобный интерфейс для создания, просмотра и обновления статусов, меток и задач. Будьте организованными и легко находите нужную информацию. Ваша команда сможет сотрудничать и достигать поставленных целей."
+msgstr ""
+"Приложение обеспечивает удобный интерфейс для создания, просмотра и "
+"обновления статусов, меток и задач. Будьте организованными и легко находите "
+"нужную информацию. Ваша команда сможет сотрудничать и достигать поставленных "
+"целей."
 
 #: task_manager/templates/index.html:18
 msgid ""
